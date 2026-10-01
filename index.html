@@ -4,907 +4,3375 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Finanças a Dois</title>
+
 <style>
-:root{--bg:#f5f7f6;--surface:#fff;--text:#17211b;--muted:#718078;--line:#e5ebe7;--green:#16834b;--green2:#e9f7ef;--red:#c83b3b;--red2:#fff0f0;--blue:#356ae6;--shadow:0 10px 30px #17211b0d}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text)}button,input,select{font:inherit}.app{min-height:100vh;padding:20px;background:var(--bg)}.wrap{max-width:1120px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.brand{font-size:24px;font-weight:800}.sub{color:var(--muted);font-size:13px}.actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:var(--surface);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.btn.danger{color:var(--red);background:var(--red2)}.btn.smallbtn{padding:7px 9px;font-size:12px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.label{font-size:12px;color:var(--muted);font-weight:700}.value{font-size:25px;font-weight:800;margin-top:7px}.pos{color:var(--green)}.neg{color:var(--red)}.section{margin-top:18px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}.section h2{font-size:17px;margin:0}.two{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.list{display:flex;flex-direction:column}.row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);gap:12px}.row:last-child{border-bottom:0}.left{display:flex;gap:11px;align-items:center;min-width:0}.dot{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#f0f4f1;flex:0 0 auto}.small{font-size:12px;color:var(--muted)}.tabs{display:flex;gap:7px;margin:18px 0 12px;overflow:auto}.tab{border:1px solid var(--line);background:var(--surface);padding:9px 13px;border-radius:11px;cursor:pointer;white-space:nowrap}.tab.active{background:var(--text);color:white}.hidden{display:none}.empty{padding:25px;text-align:center;color:var(--muted)}.person{display:flex;align-items:center;gap:10px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#e9f7ef;font-weight:800}.modal{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:10}.modal.show{display:flex}.modal-box{background:var(--surface);width:min(560px,100%);border-radius:22px;padding:20px;max-height:92vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eef2ef;border-radius:10px;padding:7px;cursor:pointer}.form{display:grid;gap:12px;margin-top:15px}.field{display:grid;gap:6px}.field label{font-size:12px;font-weight:800}.field input,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:11px;background:var(--surface)}.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:4px}.pill{font-size:11px;padding:5px 8px;border-radius:999px;background:#eef2ef;color:#55625a}.goalbar{height:8px;background:#edf1ee;border-radius:10px;overflow:hidden;margin-top:9px}.goalbar i{display:block;height:100%;background:var(--green)}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.toolbar input,.toolbar select{border:1px solid var(--line);background:var(--surface);padding:9px 11px;border-radius:11px;min-width:150px}.monthbar{display:flex;align-items:center;gap:8px}.monthbar input{width:145px}.quickcats{display:flex;gap:7px;flex-wrap:wrap}.quickcats button{border:1px solid var(--line);background:#f8faf9;border-radius:10px;padding:8px 10px;cursor:pointer;font-size:12px}.notice{border:1px solid #dce8df;background:#f7fbf8;border-radius:14px;padding:13px;margin-top:10px}.notice strong{display:block;margin-bottom:5px}.wa-preview{background:#e9f7ef;border:1px solid #cfe7d8;border-radius:16px;padding:14px;white-space:pre-wrap;font-size:13px;line-height:1.5}.status{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--green);font-weight:800}.status i{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}.footer{text-align:center;color:var(--muted);font-size:11px;margin:25px 0}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.app{padding:14px}.top{align-items:flex-start}.brand{font-size:21px}.actions .btn span{display:none}.toolbar input{flex:1}.monthbar{width:100%;justify-content:space-between}}
-@media(max-width:480px){.grid{grid-template-columns:1fr 1fr}.value{font-size:20px}.card{padding:14px}.top{gap:10px}.actions{flex-shrink:0}.row{align-items:flex-start}.row>div:last-child{text-align:right}}
+:root{
+  --bg:#f5f7f6;
+  --surface:#fff;
+  --text:#17211b;
+  --muted:#718078;
+  --line:#e5ebe7;
+  --green:#16834b;
+  --green2:#e9f7ef;
+  --red:#c83b3b;
+  --red2:#fff0f0;
+  --blue:#356ae6;
+  --shadow:0 10px 30px #17211b0d
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  color:var(--text)
+}
+
+button,input,select{font:inherit}
+
+.app{
+  min-height:100vh;
+  padding:20px;
+  background:var(--bg)
+}
+
+.wrap{
+  max-width:1120px;
+  margin:auto
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px
+}
+
+.brand{
+  font-size:24px;
+  font-weight:800
+}
+
+.sub{
+  color:var(--muted);
+  font-size:13px
+}
+
+.actions{
+  display:flex;
+  gap:8px
+}
+
+.btn{
+  border:1px solid var(--line);
+  background:var(--surface);
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:700
+}
+
+.btn.primary{
+  background:var(--green);
+  color:white;
+  border-color:var(--green)
+}
+
+.btn.danger{
+  color:var(--red);
+  background:var(--red2)
+}
+
+.btn.smallbtn{
+  padding:7px 9px;
+  font-size:12px
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:var(--shadow)
+}
+
+.label{
+  font-size:12px;
+  color:var(--muted);
+  font-weight:700
+}
+
+.value{
+  font-size:25px;
+  font-weight:800;
+  margin-top:7px
+}
+
+.pos{color:var(--green)}
+.neg{color:var(--red)}
+
+.section{margin-top:18px}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  gap:10px
+}
+
+.section h2{
+  font-size:17px;
+  margin:0
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:12px
+}
+
+.list{
+  display:flex;
+  flex-direction:column
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+  gap:12px
+}
+
+.row:last-child{border-bottom:0}
+
+.left{
+  display:flex;
+  gap:11px;
+  align-items:center;
+  min-width:0
+}
+
+.dot{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:#f0f4f1;
+  flex:0 0 auto
+}
+
+.small{
+  font-size:12px;
+  color:var(--muted)
+}
+
+.tabs{
+  display:flex;
+  gap:7px;
+  margin:18px 0 12px;
+  overflow:auto
+}
+
+.tab{
+  border:1px solid var(--line);
+  background:var(--surface);
+  padding:9px 13px;
+  border-radius:11px;
+  cursor:pointer;
+  white-space:nowrap
+}
+
+.tab.active{
+  background:var(--text);
+  color:white
+}
+
+.hidden{display:none}
+
+.empty{
+  padding:25px;
+  text-align:center;
+  color:var(--muted)
+}
+
+.person{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#e9f7ef;
+  font-weight:800
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:12px;
+  z-index:10
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+  background:var(--surface);
+  width:min(560px,100%);
+  border-radius:22px;
+  padding:20px;
+  max-height:92vh;
+  overflow:auto
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.close{
+  border:0;
+  background:#eef2ef;
+  border-radius:10px;
+  padding:7px;
+  cursor:pointer
+}
+
+.form{
+  display:grid;
+  gap:12px;
+  margin-top:15px
+}
+
+.field{
+  display:grid;
+  gap:6px
+}
+
+.field label{
+  font-size:12px;
+  font-weight:800
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--surface)
+}
+
+.form-actions{
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+  margin-top:4px
+}
+
+.pill{
+  font-size:11px;
+  padding:5px 8px;
+  border-radius:999px;
+  background:#eef2ef;
+  color:#55625a
+}
+
+.goalbar{
+  height:8px;
+  background:#edf1ee;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:9px
+}
+
+.goalbar i{
+  display:block;
+  height:100%;
+  background:var(--green)
+}
+
+.toolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
+}
+
+.toolbar input,
+.toolbar select{
+  border:1px solid var(--line);
+  background:var(--surface);
+  padding:9px 11px;
+  border-radius:11px;
+  min-width:150px
+}
+
+.monthbar{
+  display:flex;
+  align-items:center;
+  gap:8px
+}
+
+.monthbar input{width:145px}
+
+.quickcats{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap
+}
+
+.quickcats button{
+  border:1px solid var(--line);
+  background:#f8faf9;
+  border-radius:10px;
+  padding:8px 10px;
+  cursor:pointer;
+  font-size:12px
+}
+
+.notice{
+  border:1px solid #dce8df;
+  background:#f7fbf8;
+  border-radius:14px;
+  padding:13px;
+  margin-top:10px
+}
+
+.notice strong{
+  display:block;
+  margin-bottom:5px
+}
+
+.wa-preview{
+  background:#e9f7ef;
+  border:1px solid #cfe7d8;
+  border-radius:16px;
+  padding:14px;
+  white-space:pre-wrap;
+  font-size:13px;
+  line-height:1.5
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:12px;
+  color:var(--green);
+  font-weight:800
+}
+
+.status i{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  display:inline-block
+}
+
+.footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+  margin:25px 0
+}
+
+.auth{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:var(--bg)
+}
+
+.auth-box{
+  width:min(430px,100%);
+  background:white;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:25px;
+  box-shadow:var(--shadow)
+}
+
+.auth-logo{
+  font-size:25px;
+  font-weight:800;
+  margin-bottom:5px
+}
+
+.auth-sub{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:22px
+}
+
+.auth-message{
+  padding:11px;
+  border-radius:11px;
+  background:var(--red2);
+  color:var(--red);
+  font-size:13px;
+  margin-bottom:12px
+}
+
+.auth-success{
+  padding:11px;
+  border-radius:11px;
+  background:var(--green2);
+  color:var(--green);
+  font-size:13px;
+  margin-bottom:12px
+}
+
+.loading{
+  position:fixed;
+  inset:0;
+  background:#f5f7f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:50
+}
+
+.loading-box{
+  text-align:center
+}
+
+.spinner{
+  width:32px;
+  height:32px;
+  border:3px solid #dce8df;
+  border-top-color:var(--green);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin:auto auto 12px
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
+  .app{padding:14px}
+  .top{align-items:flex-start}
+  .brand{font-size:21px}
+  .actions .btn span{display:none}
+  .toolbar input{flex:1}
+  .monthbar{
+    width:100%;
+    justify-content:space-between
+  }
+}
+
+@media(max-width:480px){
+  .grid{grid-template-columns:1fr 1fr}
+  .value{font-size:20px}
+  .card{padding:14px}
+  .top{gap:10px}
+  .actions{flex-shrink:0}
+  .row{align-items:flex-start}
+  .row>div:last-child{text-align:right}
+}
 </style>
 </head>
+
 <body>
-<div class="app"><div class="wrap">
+
+<!-- LOGIN -->
+<div id="authScreen" class="auth">
+  <div class="auth-box">
+
+    <div class="auth-logo">Finanças a Dois</div>
+    <div class="auth-sub">
+      Controle simples do dinheiro de vocês.
+    </div>
+
+    <div id="authMessage"></div>
+
+    <form id="loginForm" class="form">
+
+      <div class="field">
+        <label>E-mail</label>
+        <input id="loginEmail" type="email" required placeholder="seu@email.com">
+      </div>
+
+      <div class="field">
+        <label>Senha</label>
+        <input id="loginPassword" type="password" required placeholder="••••••••">
+      </div>
+
+      <button class="btn primary" type="submit">
+        Entrar
+      </button>
+
+      <button class="btn" type="button" onclick="showSignup()">
+        Criar minha conta
+      </button>
+
+    </form>
+
+    <form id="signupForm" class="form hidden">
+
+      <div class="field">
+        <label>Seu nome</label>
+        <input id="signupName" required placeholder="Guilherme">
+      </div>
+
+      <div class="field">
+        <label>E-mail</label>
+        <input id="signupEmail" type="email" required placeholder="seu@email.com">
+      </div>
+
+      <div class="field">
+        <label>Senha</label>
+        <input id="signupPassword" type="password" minlength="6" required placeholder="Mínimo 6 caracteres">
+      </div>
+
+      <button class="btn primary" type="submit">
+        Criar conta
+      </button>
+
+      <button class="btn" type="button" onclick="showLogin()">
+        Já tenho uma conta
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- LOADING -->
+<div id="loadingScreen" class="loading hidden">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <b>Carregando Finanças a Dois...</b>
+  </div>
+</div>
+
+
+<!-- APP -->
+<div id="appScreen" class="app hidden">
+<div class="wrap">
 
 <header class="top">
-<div>
-<div class="brand">Finanças a Dois</div>
-<div class="sub">Guilherme & Isa · controle simples do dinheiro</div>
-</div>
-<div class="actions">
-<button class="btn" onclick="openModal('income')"><span>+ </span>Entrada</button>
-<button class="btn primary" onclick="openModal('expense')"><span>+ </span>Gasto</button>
-</div>
+
+  <div>
+    <div class="brand">Finanças a Dois</div>
+    <div class="sub">
+      Guilherme & Isa · controle simples do dinheiro
+    </div>
+  </div>
+
+  <div class="actions">
+
+    <button class="btn" onclick="openModal('income')">
+      <span>+ </span>Entrada
+    </button>
+
+    <button class="btn primary" onclick="openModal('expense')">
+      <span>+ </span>Gasto
+    </button>
+
+  </div>
+
 </header>
 
+
 <section class="card" style="margin-bottom:12px">
-<div class="section-head">
-<div>
-<div class="label">Período do painel</div>
-<div class="monthbar">
-<button class="btn smallbtn" onclick="shiftMonth(-1)">‹</button>
-<input id="monthFilter" type="month" onchange="render()">
-<button class="btn smallbtn" onclick="shiftMonth(1)">›</button>
-</div>
-</div>
-<div class="status"><i></i> Notificações preparadas</div>
-</div>
+
+  <div class="section-head">
+
+    <div>
+      <div class="label">Período do painel</div>
+
+      <div class="monthbar">
+
+        <button class="btn smallbtn" onclick="shiftMonth(-1)">
+          ‹
+        </button>
+
+        <input
+          id="monthFilter"
+          type="month"
+          onchange="render()"
+        >
+
+        <button class="btn smallbtn" onclick="shiftMonth(1)">
+          ›
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="status">
+      <i></i>
+      <span id="syncStatus">Sincronizado</span>
+    </div>
+
+  </div>
+
 </section>
+
 
 <div class="grid" id="cards"></div>
 
+
 <div class="tabs">
-<button class="tab active" data-tab="home">Visão geral</button>
-<button class="tab" data-tab="history">Histórico</button>
-<button class="tab" data-tab="bills">Contas</button>
-<button class="tab" data-tab="goals">Metas</button>
-<button class="tab" data-tab="couple">Casal</button>
-<button class="tab" data-tab="notify">WhatsApp</button>
+
+  <button class="tab active" data-tab="home">
+    Visão geral
+  </button>
+
+  <button class="tab" data-tab="history">
+    Histórico
+  </button>
+
+  <button class="tab" data-tab="bills">
+    Contas
+  </button>
+
+  <button class="tab" data-tab="goals">
+    Metas
+  </button>
+
+  <button class="tab" data-tab="couple">
+    Casal
+  </button>
+
+  <button class="tab" data-tab="notify">
+    WhatsApp
+  </button>
+
 </div>
 
+
+<!-- HOME -->
 <main id="home" class="tabpage">
-<div class="two">
 
-<section class="card">
-<div class="section-head">
-<h2>Movimentações recentes</h2>
-<button class="btn" onclick="openModal('expense')">Novo</button>
-</div>
-<div class="list" id="recent"></div>
-</section>
+  <div class="two">
 
-<section class="card">
-<div class="section-head">
-<h2>Por pessoa</h2>
-</div>
-<div id="people"></div>
-</section>
+    <section class="card">
 
-</div>
+      <div class="section-head">
 
-<section class="section card">
-<div class="section-head">
-<h2>Contas próximas</h2>
-<button class="btn" onclick="switchTab('bills')">Ver todas</button>
-</div>
-<div id="upcoming"></div>
-</section>
+        <h2>Movimentações recentes</h2>
+
+        <button class="btn" onclick="openModal('expense')">
+          Novo
+        </button>
+
+      </div>
+
+      <div class="list" id="recent"></div>
+
+    </section>
+
+
+    <section class="card">
+
+      <div class="section-head">
+        <h2>Por pessoa</h2>
+      </div>
+
+      <div id="people"></div>
+
+    </section>
+
+  </div>
+
+
+  <section class="section card">
+
+    <div class="section-head">
+
+      <h2>Contas próximas</h2>
+
+      <button class="btn" onclick="switchTab('bills')">
+        Ver todas
+      </button>
+
+    </div>
+
+    <div id="upcoming"></div>
+
+  </section>
+
 </main>
 
+
+<!-- HISTÓRICO -->
 <main id="history" class="tabpage hidden">
+
 <section class="card">
-<div class="section-head">
-<h2>Histórico</h2>
-</div>
 
-<div class="toolbar">
-<input id="search" placeholder="Buscar gasto, categoria..." oninput="renderHistory()">
+  <div class="section-head">
+    <h2>Histórico</h2>
+  </div>
 
-<select id="filterPerson" onchange="renderHistory()">
-<option>Todos</option>
-<option>Guilherme</option>
-<option>Isa</option>
-<option>Compartilhado</option>
-</select>
+  <div class="toolbar">
 
-<select id="filterType" onchange="renderHistory()">
-<option value="all">Entradas e gastos</option>
-<option value="expense">Só gastos</option>
-<option value="income">Só entradas</option>
-</select>
-</div>
+    <input
+      id="search"
+      placeholder="Buscar gasto, categoria..."
+      oninput="renderHistory()"
+    >
 
-<div id="historyList"></div>
+    <select id="filterPerson" onchange="renderHistory()">
+      <option>Todos</option>
+      <option>Guilherme</option>
+      <option>Isa</option>
+      <option>Compartilhado</option>
+    </select>
+
+    <select id="filterType" onchange="renderHistory()">
+      <option value="all">Entradas e gastos</option>
+      <option value="expense">Só gastos</option>
+      <option value="income">Só entradas</option>
+    </select>
+
+  </div>
+
+  <div id="historyList"></div>
+
 </section>
+
 </main>
 
+
+<!-- CONTAS -->
 <main id="bills" class="tabpage hidden">
+
 <section class="card">
-<div class="section-head">
-<h2>Contas a pagar</h2>
-<button class="btn primary" onclick="openBill()">+ Conta</button>
-</div>
-<div id="billsList"></div>
+
+  <div class="section-head">
+
+    <h2>Contas a pagar</h2>
+
+    <button class="btn primary" onclick="openBill()">
+      + Conta
+    </button>
+
+  </div>
+
+  <div id="billsList"></div>
+
 </section>
+
 </main>
 
+
+<!-- METAS -->
 <main id="goals" class="tabpage hidden">
+
 <section class="card">
-<div class="section-head">
-<h2>Metas</h2>
-<button class="btn primary" onclick="openGoal()">+ Meta</button>
-</div>
-<div id="goalsList"></div>
+
+  <div class="section-head">
+
+    <h2>Metas</h2>
+
+    <button class="btn primary" onclick="openGoal()">
+      + Meta
+    </button>
+
+  </div>
+
+  <div id="goalsList"></div>
+
 </section>
+
 </main>
 
+
+<!-- CASAL -->
 <main id="couple" class="tabpage hidden">
+
 <section class="card">
 
-<div class="section-head">
-<div>
-<h2>Conta do casal</h2>
-<div class="small">Preparando o app para sincronizar em mais de um celular.</div>
-</div>
-<span class="pill">MVP</span>
-</div>
+  <div class="section-head">
 
-<div class="notice">
-<strong>Guilherme & Isa</strong>
-<span class="small">Este casal será a primeira conta do sistema. Na próxima etapa, os dados passam do navegador para um banco compartilhado.</span>
-</div>
+    <div>
 
-<div class="section">
-<div class="label">Membros</div>
+      <h2>Conta do casal</h2>
 
-<div class="row">
-<div class="person">
-<div class="avatar">G</div>
-<div>
-<b>Guilherme</b>
-<div class="small">Administrador</div>
-</div>
-</div>
-<span class="pill">Você</span>
-</div>
+      <div class="small">
+        Dados sincronizados pelo Supabase.
+      </div>
 
-<div class="row">
-<div class="person">
-<div class="avatar">I</div>
-<div>
-<b>Isa</b>
-<div class="small">Membro do casal</div>
-</div>
-</div>
-<span class="pill">Convidada</span>
-</div>
-</div>
+    </div>
 
-<div class="section">
-<div class="label">Sincronização</div>
+    <span class="pill">
+      CONECTADO
+    </span>
 
-<div class="notice">
-<strong>Banco compartilhado ainda não conectado</strong>
-<span class="small">A interface já está separada por casal e membros. Para ativar login e sincronização real, precisamos conectar este projeto a um backend.</span>
-</div>
-</div>
+  </div>
 
-<div class="form-actions">
-<button class="btn primary" onclick="simulateAccount()">Simular conexão</button>
-</div>
 
-<div id="accountStatus" class="small" style="margin-top:10px"></div>
+  <div class="notice">
+
+    <strong id="coupleName">
+      Guilherme & Isa
+    </strong>
+
+    <span class="small">
+      Os lançamentos ficam vinculados à conta do casal.
+    </span>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="label">
+      Conta atual
+    </div>
+
+    <div class="row">
+
+      <div class="person">
+
+        <div class="avatar" id="userAvatar">
+          G
+        </div>
+
+        <div>
+
+          <b id="userName">
+            Usuário
+          </b>
+
+          <div class="small" id="userEmail">
+            —
+          </div>
+
+        </div>
+
+      </div>
+
+      <span class="pill">
+        Você
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="label">
+      Sincronização
+    </div>
+
+    <div class="notice">
+
+      <strong>
+        Banco compartilhado conectado
+      </strong>
+
+      <span class="small">
+        Os dados deste casal são salvos na nuvem.
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="form-actions">
+
+    <button class="btn" onclick="syncRemote(true)">
+      Sincronizar agora
+    </button>
+
+    <button class="btn danger" onclick="logout()">
+      Sair
+    </button>
+
+  </div>
 
 </section>
+
 </main>
 
+
+<!-- WHATSAPP -->
 <main id="notify" class="tabpage hidden">
+
 <section class="card">
 
-<div class="section-head">
-<div>
-<h2>WhatsApp do casal</h2>
-<div class="small">Estrutura pronta para conectar a API oficial depois.</div>
-</div>
-<span class="pill">Modo demonstração</span>
-</div>
+  <div class="section-head">
 
-<div class="notice">
-<strong>Como vai funcionar</strong>
-<span class="small">Quando um gasto for lançado ou uma conta for paga, o sistema poderá gerar automaticamente a mensagem abaixo. A conexão real com o WhatsApp exige backend + WhatsApp Business Platform; este preview não envia mensagens de verdade.</span>
-</div>
+    <div>
 
-<div class="section">
-<div class="label">Mensagem de exemplo</div>
-<div class="wa-preview" id="waPreview"></div>
-</div>
+      <h2>WhatsApp do casal</h2>
 
-<div class="form-actions">
-<button class="btn" onclick="copyWa()">Copiar mensagem</button>
-<button class="btn primary" onclick="simulateWa()">Simular envio</button>
-</div>
+      <div class="small">
+        Estrutura pronta para integração futura.
+      </div>
 
-<div id="waStatus" class="small" style="margin-top:10px"></div>
+    </div>
+
+    <span class="pill">
+      Demonstração
+    </span>
+
+  </div>
+
+
+  <div class="notice">
+
+    <strong>
+      Como vai funcionar
+    </strong>
+
+    <span class="small">
+      O sistema prepara mensagens quando houver movimentações.
+      O envio automático pelo WhatsApp ainda exige uma integração oficial.
+    </span>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="label">
+      Mensagem de exemplo
+    </div>
+
+    <div class="wa-preview" id="waPreview"></div>
+
+  </div>
+
+
+  <div class="form-actions">
+
+    <button class="btn" onclick="copyWa()">
+      Copiar mensagem
+    </button>
+
+    <button class="btn primary" onclick="simulateWa()">
+      Simular envio
+    </button>
+
+  </div>
+
+
+  <div id="waStatus" class="small" style="margin-top:10px"></div>
 
 </section>
+
 </main>
+
 
 <div class="footer">
-MVP local · dados salvos neste navegador · WhatsApp em preparação para integração oficial
+  Finanças a Dois · dados sincronizados na nuvem
 </div>
 
-</div></div>
+</div>
+</div>
 
+
+<!-- MODAL -->
 <div class="modal" id="modal">
+
 <div class="modal-box">
 
-<div class="modal-head">
-<h2 id="modalTitle">Novo lançamento</h2>
-<button class="close" onclick="closeModal()">✕</button>
+  <div class="modal-head">
+
+    <h2 id="modalTitle">
+      Novo lançamento
+    </h2>
+
+    <button class="close" onclick="closeModal()">
+      ✕
+    </button>
+
+  </div>
+
+  <form class="form" id="form"></form>
+
 </div>
 
-<form class="form" id="form"></form>
+</div>
 
-</div>
-</div>
 
 <script>
 
-const KEY='financas-a-dois-v2';
+/* =========================================================
+   SUPABASE
+========================================================= */
 
-let db=JSON.parse(localStorage.getItem(KEY)||'null')||{
-transactions:[],
-bills:[],
-goals:[],
-notifications:[]
+const SUPABASE_URL =
+'https://rspkhllrngxxrmbobfyn.supabase.co';
+
+const SUPABASE_KEY =
+'sb_publishable_TTVsuyc-QBfCqtQBa7buFQ_r2Z1Gakh';
+
+const KEY =
+'financas-a-dois-v3';
+
+const SESSION_KEY =
+'financas-a-dois-session';
+
+const COUPLE_KEY =
+'financas-a-dois-couple-id';
+
+
+let session =
+JSON.parse(localStorage.getItem(SESSION_KEY)||'null');
+
+let coupleId =
+localStorage.getItem(COUPLE_KEY)||null;
+
+
+let db =
+JSON.parse(localStorage.getItem(KEY)||'null') ||
+{
+  transactions:[],
+  bills:[],
+  goals:[],
+  notifications:[]
 };
 
-const brl=v=>Number(v||0).toLocaleString('pt-BR',{
-style:'currency',
-currency:'BRL'
+
+/* =========================================================
+   UTILIDADES
+========================================================= */
+
+const brl =
+v => Number(v||0).toLocaleString(
+'pt-BR',
+{
+  style:'currency',
+  currency:'BRL'
 });
 
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({
-'&':'&amp;',
-'<':'&lt;',
-'>':'&gt;',
-'"':'&quot;',
-"'":'&#039;'
-}[m]));
 
-const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2);
+const esc =
+s => String(s??'').replace(
+/[&<>"']/g,
+m => ({
+  '&':'&amp;',
+  '<':'&lt;',
+  '>':'&gt;',
+  '"':'&quot;',
+  "'":'&#039;'
+}[m])
+);
 
-function month(){
-return document.getElementById('monthFilter').value||new Date().toISOString().slice(0,7);
-}
 
-function save(){
-localStorage.setItem(KEY,JSON.stringify(db));
-render();
-}
+const uid =
+() =>
+crypto.randomUUID
+?
+crypto.randomUUID()
+:
+Date.now().toString(36)+Math.random().toString(36).slice(2);
+
 
 function today(){
-return new Date().toISOString().slice(0,10);
+  return new Date().toISOString().slice(0,10);
 }
 
-function inMonth(x){
-return String(x.date||'').slice(0,7)===month();
+
+function month(){
+  return document.getElementById('monthFilter').value ||
+  new Date().toISOString().slice(0,7);
 }
+
+
+function inMonth(x){
+  return String(x.date||'').slice(0,7)===month();
+}
+
+
+/* =========================================================
+   SUPABASE REQUEST
+========================================================= */
+
+async function sb(path,options={},token=session?.access_token){
+
+  const headers={
+    apikey:SUPABASE_KEY,
+    Authorization:'Bearer '+token,
+    'Content-Type':'application/json',
+    ...(options.headers||{})
+  };
+
+  const res =
+  await fetch(
+    SUPABASE_URL+path,
+    {
+      ...options,
+      headers
+    }
+  );
+
+  if(!res.ok){
+
+    const text =
+    await res.text();
+
+    throw new Error(text||'Erro no Supabase');
+
+  }
+
+  if(res.status===204)
+    return null;
+
+  return res.json();
+
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+async function authLogin(email,password){
+
+  const res =
+  await fetch(
+    SUPABASE_URL+
+    '/auth/v1/token?grant_type=password',
+    {
+      method:'POST',
+      headers:{
+        apikey:SUPABASE_KEY,
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        email,
+        password
+      })
+    }
+  );
+
+  const data =
+  await res.json();
+
+  if(!res.ok){
+
+    throw new Error(
+      data.error_description ||
+      data.msg ||
+      'E-mail ou senha incorretos.'
+    );
+
+  }
+
+  return data;
+
+}
+
+
+async function authSignup(
+  email,
+  password,
+  name
+){
+
+  const res =
+  await fetch(
+    SUPABASE_URL+
+    '/auth/v1/signup',
+    {
+      method:'POST',
+      headers:{
+        apikey:SUPABASE_KEY,
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        email,
+        password,
+        data:{
+          name
+        }
+      })
+    }
+  );
+
+  const data =
+  await res.json();
+
+  if(!res.ok){
+
+    throw new Error(
+      data.msg ||
+      data.error_description ||
+      'Não foi possível criar a conta.'
+    );
+
+  }
+
+  if(!data.access_token){
+
+    throw new Error(
+      'Conta criada. Confirme seu e-mail e depois entre novamente.'
+    );
+
+  }
+
+  return data;
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function showLogin(){
+
+  document
+  .getElementById('loginForm')
+  .classList.remove('hidden');
+
+  document
+  .getElementById('signupForm')
+  .classList.add('hidden');
+
+  document
+  .getElementById('authMessage')
+  .innerHTML='';
+
+}
+
+
+function showSignup(){
+
+  document
+  .getElementById('loginForm')
+  .classList.add('hidden');
+
+  document
+  .getElementById('signupForm')
+  .classList.remove('hidden');
+
+  document
+  .getElementById('authMessage')
+  .innerHTML='';
+
+}
+
+
+function authError(message){
+
+  document
+  .getElementById('authMessage')
+  .innerHTML=
+  `<div class="auth-message">${esc(message)}</div>`;
+
+}
+
+
+function authSuccess(message){
+
+  document
+  .getElementById('authMessage')
+  .innerHTML=
+  `<div class="auth-success">${esc(message)}</div>`;
+
+}
+
+
+document
+.getElementById('loginForm')
+.addEventListener(
+'submit',
+async e=>{
+
+  e.preventDefault();
+
+  const email =
+  document.getElementById('loginEmail').value.trim();
+
+  const password =
+  document.getElementById('loginPassword').value;
+
+  try{
+
+    document
+    .getElementById('loadingScreen')
+    .classList.remove('hidden');
+
+    const data =
+    await authLogin(email,password);
+
+    session=data;
+
+    localStorage.setItem(
+      SESSION_KEY,
+      JSON.stringify(session)
+    );
+
+    await startApp();
+
+  }catch(error){
+
+    document
+    .getElementById('loadingScreen')
+    .classList.add('hidden');
+
+    authError(error.message);
+
+  }
+
+});
+
+
+document
+.getElementById('signupForm')
+.addEventListener(
+'submit',
+async e=>{
+
+  e.preventDefault();
+
+  const name =
+  document.getElementById('signupName').value.trim();
+
+  const email =
+  document.getElementById('signupEmail').value.trim();
+
+  const password =
+  document.getElementById('signupPassword').value;
+
+  try{
+
+    document
+    .getElementById('loadingScreen')
+    .classList.remove('hidden');
+
+    const data =
+    await authSignup(
+      email,
+      password,
+      name
+    );
+
+    session=data;
+
+    localStorage.setItem(
+      SESSION_KEY,
+      JSON.stringify(session)
+    );
+
+    await startApp();
+
+  }catch(error){
+
+    document
+    .getElementById('loadingScreen')
+    .classList.add('hidden');
+
+    authError(error.message);
+
+  }
+
+});
+
+
+/* =========================================================
+   COUPLE
+========================================================= */
+
+async function ensureCouple(){
+
+  if(!session?.user?.id)
+    throw new Error('Sessão inválida.');
+
+  const memberships =
+  await sb(
+    '/rest/v1/couple_members?select=couple_id,role,display_name&user_id=eq.'+
+    encodeURIComponent(session.user.id)
+  );
+
+  if(memberships?.length){
+
+    coupleId=
+    memberships[0].couple_id;
+
+    localStorage.setItem(
+      COUPLE_KEY,
+      coupleId
+    );
+
+    return coupleId;
+
+  }
+
+
+  const created =
+  await sb(
+    '/rest/v1/couples',
+    {
+      method:'POST',
+      headers:{
+        Prefer:'return=representation'
+      },
+      body:JSON.stringify({
+        name:'Guilherme & Isa',
+        created_by:session.user.id
+      })
+    }
+  );
+
+  if(!created?.length)
+    throw new Error('Não foi possível criar o casal.');
+
+  coupleId=created[0].id;
+
+  localStorage.setItem(
+    COUPLE_KEY,
+    coupleId
+  );
+
+
+  await sb(
+    '/rest/v1/couple_members',
+    {
+      method:'POST',
+      headers:{
+        Prefer:'return=minimal'
+      },
+      body:JSON.stringify({
+        couple_id:coupleId,
+        user_id:session.user.id,
+        role:'admin',
+        display_name:
+        session.user.user_metadata?.name ||
+        session.user.email?.split('@')[0] ||
+        'Usuário'
+      })
+    }
+  );
+
+
+  return coupleId;
+
+}
+
+
+/* =========================================================
+   CLOUD SAVE
+========================================================= */
+
+async function pushRemote(){
+
+  if(!session?.access_token || !coupleId)
+    return;
+
+
+  setSyncStatus('Salvando...');
+
+
+  const userId =
+  session.user.id;
+
+
+  /*
+    TRANSAÇÕES
+  */
+
+  if(db.transactions.length){
+
+    const rows =
+    db.transactions.map(x=>({
+
+      id:x.id,
+      couple_id:coupleId,
+      user_id:userId,
+      type:x.type,
+      description:x.desc,
+      amount:Number(x.value||0),
+      person:x.person||'Compartilhado',
+      category:x.category||'Outros',
+      transaction_date:x.date||today(),
+      installment_current:x.installment?.current||null,
+      installment_total:x.installment?.total||null
+
+    }));
+
+    await sb(
+      '/rest/v1/transactions?on_conflict=id',
+      {
+        method:'POST',
+        headers:{
+          Prefer:'resolution=merge-duplicates,return=minimal'
+        },
+        body:JSON.stringify(rows)
+      }
+    );
+
+  }
+
+
+  /*
+    CONTAS
+  */
+
+  if(db.bills.length){
+
+    const rows =
+    db.bills.map(x=>({
+
+      id:x.id,
+      couple_id:coupleId,
+      user_id:userId,
+      name:x.name,
+      amount:Number(x.value||0),
+      due_date:x.due,
+      person:x.person||'Compartilhado',
+      paid:!!x.paid,
+      paid_at:x.paid
+      ?
+      (x.paidAt||new Date().toISOString())
+      :
+      null
+
+    }));
+
+    await sb(
+      '/rest/v1/bills?on_conflict=id',
+      {
+        method:'POST',
+        headers:{
+          Prefer:'resolution=merge-duplicates,return=minimal'
+        },
+        body:JSON.stringify(rows)
+      }
+    );
+
+  }
+
+
+  /*
+    METAS
+  */
+
+  if(db.goals.length){
+
+    const rows =
+    db.goals.map(x=>({
+
+      id:x.id||uid(),
+      couple_id:coupleId,
+      user_id:userId,
+      name:x.name,
+      target_amount:Number(x.target||0),
+      current_amount:Number(x.current||0)
+
+    }));
+
+    db.goals=rows.map(x=>({
+
+      id:x.id,
+      name:x.name,
+      target:x.target_amount,
+      current:x.current_amount
+
+    }));
+
+    localStorage.setItem(
+      KEY,
+      JSON.stringify(db)
+    );
+
+
+    await sb(
+      '/rest/v1/goals?on_conflict=id',
+      {
+        method:'POST',
+        headers:{
+          Prefer:'resolution=merge-duplicates,return=minimal'
+        },
+        body:JSON.stringify(rows)
+      }
+    );
+
+  }
+
+
+  setSyncStatus('Sincronizado');
+
+}
+
+
+/* =========================================================
+   CLOUD SYNC
+========================================================= */
+
+async function syncRemote(showMessage=false){
+
+  if(!session?.access_token || !coupleId)
+    return;
+
+  try{
+
+    setSyncStatus('Sincronizando...');
+
+
+    const tx =
+    await sb(
+      '/rest/v1/transactions?select=*&couple_id=eq.'+
+      encodeURIComponent(coupleId)+
+      '&order=transaction_date.desc'
+    );
+
+
+    const bills =
+    await sb(
+      '/rest/v1/bills?select=*&couple_id=eq.'+
+      encodeURIComponent(coupleId)+
+      '&order=due_date.asc'
+    );
+
+
+    const goals =
+    await sb(
+      '/rest/v1/goals?select=*&couple_id=eq.'+
+      encodeURIComponent(coupleId)+
+      '&order=created_at.asc'
+    );
+
+
+    /*
+      Se o banco já possuir dados,
+      usamos os dados da nuvem.
+    */
+
+    if(tx?.length){
+
+      db.transactions =
+      tx.map(x=>({
+
+        id:x.id,
+        type:x.type,
+        desc:x.description,
+        value:Number(x.amount),
+        person:x.person,
+        category:x.category,
+        date:x.transaction_date,
+        installment:
+        x.installment_current
+        ?
+        {
+          current:x.installment_current,
+          total:x.installment_total
+        }
+        :
+        null
+
+      }));
+
+    }else if(db.transactions.length){
+
+      await pushRemote();
+
+    }
+
+
+    if(bills?.length){
+
+      db.bills =
+      bills.map(x=>({
+
+        id:x.id,
+        name:x.name,
+        value:Number(x.amount),
+        due:x.due_date,
+        person:x.person,
+        paid:x.paid,
+        paidAt:x.paid_at
+
+      }));
+
+    }else if(db.bills.length){
+
+      await pushRemote();
+
+    }
+
+
+    if(goals?.length){
+
+      db.goals =
+      goals.map(x=>({
+
+        id:x.id,
+        name:x.name,
+        target:Number(x.target_amount),
+        current:Number(x.current_amount)
+
+      }));
+
+    }else if(db.goals.length){
+
+      await pushRemote();
+
+    }
+
+
+    localStorage.setItem(
+      KEY,
+      JSON.stringify(db)
+    );
+
+
+    render();
+
+
+    if(showMessage){
+
+      alert('Sincronização concluída.');
+
+    }
+
+
+    setSyncStatus('Sincronizado');
+
+
+  }catch(error){
+
+    console.error(error);
+
+    setSyncStatus('Erro ao sincronizar');
+
+    if(showMessage){
+
+      alert(
+        'Não foi possível sincronizar agora.\n\n'+
+        error.message
+      );
+
+    }
+
+    throw error;
+
+  }
+
+}
+
+
+/* =========================================================
+   START APP
+========================================================= */
+
+async function startApp(){
+
+  try{
+
+    document
+    .getElementById('loadingScreen')
+    .classList.remove('hidden');
+
+
+    await ensureCouple();
+
+
+    /*
+      Primeiro tenta trazer os dados
+      existentes da nuvem.
+    */
+
+    await syncRemote(false);
+
+
+    document
+    .getElementById('authScreen')
+    .classList.add('hidden');
+
+
+    document
+    .getElementById('appScreen')
+    .classList.remove('hidden');
+
+
+    updateAccountInfo();
+
+    render();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    localStorage.removeItem(SESSION_KEY);
+
+    session=null;
+
+    document
+    .getElementById('authScreen')
+    .classList.remove('hidden');
+
+    authError(
+      'Não foi possível conectar ao banco. '+
+      error.message
+    );
+
+  }finally{
+
+    document
+    .getElementById('loadingScreen')
+    .classList.add('hidden');
+
+  }
+
+}
+
+
+function updateAccountInfo(){
+
+  if(!session?.user)
+    return;
+
+  const name =
+  session.user.user_metadata?.name ||
+  session.user.email?.split('@')[0] ||
+  'Usuário';
+
+
+  document
+  .getElementById('userName')
+  .textContent=name;
+
+
+  document
+  .getElementById('userEmail')
+  .textContent=
+  session.user.email||'';
+
+
+  document
+  .getElementById('userAvatar')
+  .textContent=
+  name.charAt(0).toUpperCase();
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout(){
+
+  try{
+
+    await fetch(
+      SUPABASE_URL+'/auth/v1/logout',
+      {
+        method:'POST',
+        headers:{
+          apikey:SUPABASE_KEY,
+          Authorization:'Bearer '+session?.access_token
+        }
+      }
+    );
+
+  }catch(e){}
+
+
+  session=null;
+  coupleId=null;
+
+  localStorage.removeItem(SESSION_KEY);
+  localStorage.removeItem(COUPLE_KEY);
+
+  document
+  .getElementById('appScreen')
+  .classList.add('hidden');
+
+  document
+  .getElementById('authScreen')
+  .classList.remove('hidden');
+
+  showLogin();
+
+}
+
+
+/* =========================================================
+   SAVE LOCAL + CLOUD
+========================================================= */
+
+async function save(){
+
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(db)
+  );
+
+  render();
+
+
+  try{
+
+    await pushRemote();
+
+  }catch(error){
+
+    console.warn(
+      'Supabase:',
+      error.message
+    );
+
+    setSyncStatus('Salvo neste aparelho');
+
+  }
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
 
 function render(){
 
-let tx=db.transactions.filter(inMonth);
+  let tx =
+  db.transactions.filter(inMonth);
 
-let inc=tx
-.filter(x=>x.type==='income')
-.reduce((a,x)=>a+x.value,0);
 
-let exp=tx
-.filter(x=>x.type==='expense')
-.reduce((a,x)=>a+x.value,0);
+  let inc =
+  tx
+  .filter(x=>x.type==='income')
+  .reduce((a,x)=>a+x.value,0);
 
-let open=db.bills
-.filter(x=>!x.paid&&String(x.due).slice(0,7)===month())
-.reduce((a,x)=>a+x.value,0);
 
-let bal=inc-exp;
+  let exp =
+  tx
+  .filter(x=>x.type==='expense')
+  .reduce((a,x)=>a+x.value,0);
 
-document.getElementById('cards').innerHTML=[
-['Saldo',bal,bal>=0?'pos':'neg'],
-['Entradas',inc,'pos'],
-['Gastos',exp,'neg'],
-['Contas abertas',open,'neg']
-].map(x=>`
-<div class="card">
-<div class="label">${x[0]}</div>
-<div class="value ${x[2]}">${brl(x[1])}</div>
-</div>
-`).join('');
 
-let recent=[...tx]
-.sort((a,b)=>b.date.localeCompare(a.date))
-.slice(0,8);
+  let open =
+  db.bills
+  .filter(
+    x=>
+    !x.paid &&
+    String(x.due).slice(0,7)===month()
+  )
+  .reduce((a,x)=>a+x.value,0);
 
-document.getElementById('recent').innerHTML=
-recent.length
-?recent.map(txrow).join('')
-:'<div class="empty">Nenhum lançamento neste mês.</div>';
 
-let people=['Guilherme','Isa','Compartilhado'];
+  let bal=inc-exp;
 
-document.getElementById('people').innerHTML=
-people.map(p=>{
 
-let v=tx
-.filter(x=>x.person===p&&x.type==='expense')
-.reduce((a,x)=>a+x.value,0);
+  document
+  .getElementById('cards')
+  .innerHTML=[
 
-return `
-<div class="row">
-<div class="person">
-<div class="avatar">${p[0]}</div>
-<div>
-<b>${p}</b>
-<div class="small">gastos no mês</div>
-</div>
-</div>
-<b class="neg">${brl(v)}</b>
-</div>
-`;
+    ['Saldo',bal,bal>=0?'pos':'neg'],
 
-}).join('');
+    ['Entradas',inc,'pos'],
 
-let bills=[...db.bills]
-.filter(x=>!x.paid&&String(x.due).slice(0,7)===month())
-.sort((a,b)=>a.due.localeCompare(b.due))
-.slice(0,4);
+    ['Gastos',exp,'neg'],
 
-document.getElementById('upcoming').innerHTML=
-bills.length
-?bills.map(billrow).join('')
-:'<div class="empty">Nenhuma conta em aberto neste mês.</div>';
+    ['Contas abertas',open,'neg']
 
-renderHistory();
-renderBills();
-renderGoals();
-renderWa();
+  ]
+  .map(x=>`
+
+    <div class="card">
+
+      <div class="label">
+        ${x[0]}
+      </div>
+
+      <div class="value ${x[2]}">
+        ${brl(x[1])}
+      </div>
+
+    </div>
+
+  `)
+  .join('');
+
+
+  let recent =
+  [...tx]
+  .sort(
+    (a,b)=>
+    b.date.localeCompare(a.date)
+  )
+  .slice(0,8);
+
+
+  document
+  .getElementById('recent')
+  .innerHTML=
+  recent.length
+  ?
+  recent.map(txrow).join('')
+  :
+  '<div class="empty">Nenhum lançamento neste mês.</div>';
+
+
+  let people=[
+    'Guilherme',
+    'Isa',
+    'Compartilhado'
+  ];
+
+
+  document
+  .getElementById('people')
+  .innerHTML=
+  people
+  .map(p=>{
+
+    let v=
+    tx
+    .filter(
+      x=>
+      x.person===p &&
+      x.type==='expense'
+    )
+    .reduce(
+      (a,x)=>a+x.value,
+      0
+    );
+
+
+    return `
+
+      <div class="row">
+
+        <div class="person">
+
+          <div class="avatar">
+            ${p[0]}
+          </div>
+
+          <div>
+
+            <b>${p}</b>
+
+            <div class="small">
+              gastos no mês
+            </div>
+
+          </div>
+
+        </div>
+
+        <b class="neg">
+          ${brl(v)}
+        </b>
+
+      </div>
+
+    `;
+
+  })
+  .join('');
+
+
+  let bills =
+  [...db.bills]
+  .filter(
+    x=>
+    !x.paid &&
+    String(x.due).slice(0,7)===month()
+  )
+  .sort(
+    (a,b)=>
+    a.due.localeCompare(b.due)
+  )
+  .slice(0,4);
+
+
+  document
+  .getElementById('upcoming')
+  .innerHTML=
+  bills.length
+  ?
+  bills.map(billrow).join('')
+  :
+  '<div class="empty">Nenhuma conta em aberto neste mês.</div>';
+
+
+  renderHistory();
+  renderBills();
+  renderGoals();
+  renderWa();
 
 }
+
+
+/* =========================================================
+   TRANSAÇÕES
+========================================================= */
 
 function txrow(x){
 
-return `
-<div class="row">
+  return `
 
-<div class="left">
-<div class="dot">${x.type==='income'?'↑':'↓'}</div>
+    <div class="row">
 
-<div>
-<b>${esc(x.desc)}</b>
+      <div class="left">
 
-<div class="small">
-${esc(x.person)} ·
-${new Date(x.date+'T12:00').toLocaleDateString('pt-BR')} ·
-${esc(x.category||'Outros')}
-${x.installment?` · ${x.installment.current}/${x.installment.total}`:''}
-</div>
+        <div class="dot">
+          ${x.type==='income'?'↑':'↓'}
+        </div>
 
-</div>
-</div>
+        <div>
 
-<div>
+          <b>
+            ${esc(x.desc)}
+          </b>
 
-<b class="${x.type==='income'?'pos':'neg'}">
-${x.type==='income'?'+':'−'} ${brl(x.value)}
-</b>
+          <div class="small">
 
-<div style="margin-top:5px;text-align:right">
-<button class="btn smallbtn" onclick="editTx('${x.id}')">Editar</button>
-<button class="btn smallbtn danger" onclick="deleteTx('${x.id}')">Excluir</button>
-</div>
+            ${esc(x.person)}
+            ·
+            ${new Date(
+              x.date+'T12:00'
+            ).toLocaleDateString('pt-BR')}
 
-</div>
+            ·
 
-</div>
-`;
+            ${esc(x.category||'Outros')}
+
+            ${
+              x.installment
+              ?
+              ` · ${x.installment.current}/${x.installment.total}`
+              :
+              ''
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <b class="${x.type==='income'?'pos':'neg'}">
+
+          ${x.type==='income'?'+':'−'}
+
+          ${brl(x.value)}
+
+        </b>
+
+
+        <div style="margin-top:5px;text-align:right">
+
+          <button
+            class="btn smallbtn"
+            onclick="editTx('${x.id}')"
+          >
+            Editar
+          </button>
+
+          <button
+            class="btn smallbtn danger"
+            onclick="deleteTx('${x.id}')"
+          >
+            Excluir
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
 
 }
+
 
 function billrow(x){
 
-return `
-<div class="row">
+  return `
 
-<div>
-<b>${esc(x.name)}</b>
-<div class="small">
-${esc(x.person)} · vence
-${new Date(x.due+'T12:00').toLocaleDateString('pt-BR')}
-</div>
-</div>
+    <div class="row">
 
-<div style="text-align:right">
+      <div>
 
-<b class="neg">${brl(x.value)}</b>
+        <b>
+          ${esc(x.name)}
+        </b>
 
-<br>
+        <div class="small">
 
-<button class="btn smallbtn" onclick="payBill('${x.id}')">
-Pagar
-</button>
+          ${esc(x.person)}
 
-</div>
+          · vence
 
-</div>
-`;
+          ${new Date(
+            x.due+'T12:00'
+          ).toLocaleDateString('pt-BR')}
+
+        </div>
+
+      </div>
+
+
+      <div style="text-align:right">
+
+        <b class="neg">
+          ${brl(x.value)}
+        </b>
+
+        <br>
+
+        <button
+          class="btn smallbtn"
+          onclick="payBill('${x.id}')"
+        >
+          Pagar
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
 
 }
+
+
+/* =========================================================
+   HISTÓRICO
+========================================================= */
 
 function renderHistory(){
 
-let f=document.getElementById('filterPerson')?.value||'Todos';
+  let f =
+  document.getElementById('filterPerson')?.value ||
+  'Todos';
 
-let type=document.getElementById('filterType')?.value||'all';
+  let type =
+  document.getElementById('filterType')?.value ||
+  'all';
 
-let q=(document.getElementById('search')?.value||'')
-.toLowerCase()
-.trim();
+  let q =
+  (
+    document.getElementById('search')?.value ||
+    ''
+  )
+  .toLowerCase()
+  .trim();
 
-let tx=[...db.transactions]
-.filter(inMonth)
-.filter(x=>f==='Todos'||x.person===f)
-.filter(x=>type==='all'||x.type===type)
-.filter(x=>!q||[x.desc,x.category,x.person].join(' ').toLowerCase().includes(q))
-.sort((a,b)=>b.date.localeCompare(a.date));
 
-document.getElementById('historyList').innerHTML=
-tx.length
-?tx.map(txrow).join('')
-:'<div class="empty">Nenhum lançamento encontrado.</div>';
+  let tx =
+  [...db.transactions]
+  .filter(inMonth)
+  .filter(
+    x=>
+    f==='Todos' ||
+    x.person===f
+  )
+  .filter(
+    x=>
+    type==='all' ||
+    x.type===type
+  )
+  .filter(
+    x=>
+    !q ||
+    [
+      x.desc,
+      x.category,
+      x.person
+    ]
+    .join(' ')
+    .toLowerCase()
+    .includes(q)
+  )
+  .sort(
+    (a,b)=>
+    b.date.localeCompare(a.date)
+  );
+
+
+  document
+  .getElementById('historyList')
+  .innerHTML=
+  tx.length
+  ?
+  tx.map(txrow).join('')
+  :
+  '<div class="empty">Nenhum lançamento encontrado.</div>';
 
 }
+
+
+/* =========================================================
+   CONTAS
+========================================================= */
 
 function renderBills(){
 
-let el=document.getElementById('billsList');
+  let el =
+  document.getElementById('billsList');
 
-let bs=[...db.bills]
-.sort((a,b)=>a.due.localeCompare(b.due));
 
-el.innerHTML=
-bs.length
-?bs.map(x=>x.paid
-?`
-<div class="row">
-<div>
-<b>${esc(x.name)}</b>
-<div class="small">${esc(x.person)} · paga</div>
-</div>
-<span class="pill">Paga</span>
-</div>
-`
-:billrow(x)).join('')
-:'<div class="empty">Nenhuma conta cadastrada.</div>';
+  let bs =
+  [...db.bills]
+  .sort(
+    (a,b)=>
+    a.due.localeCompare(b.due)
+  );
+
+
+  el.innerHTML =
+  bs.length
+  ?
+  bs.map(
+    x=>
+    x.paid
+    ?
+
+    `
+
+    <div class="row">
+
+      <div>
+
+        <b>
+          ${esc(x.name)}
+        </b>
+
+        <div class="small">
+          ${esc(x.person)} · paga
+        </div>
+
+      </div>
+
+      <span class="pill">
+        Paga
+      </span>
+
+    </div>
+
+    `
+
+    :
+
+    billrow(x)
+
+  ).join('')
+
+  :
+
+  '<div class="empty">Nenhuma conta cadastrada.</div>';
 
 }
+
+
+/* =========================================================
+   METAS
+========================================================= */
 
 function renderGoals(){
 
-let el=document.getElementById('goalsList');
+  let el =
+  document.getElementById('goalsList');
 
-el.innerHTML=
-db.goals.length
-?db.goals.map((g,i)=>{
 
-let pct=Math.min(100,g.current/g.target*100);
+  el.innerHTML =
+  db.goals.length
+  ?
 
-return `
-<div class="row" style="display:block">
+  db.goals
+  .map((g,i)=>{
 
-<div style="display:flex;justify-content:space-between;gap:10px">
+    let pct =
+    Math.min(
+      100,
+      g.current/g.target*100
+    );
 
-<div>
-<b>${esc(g.name)}</b>
-<div class="small">${brl(g.current)} de ${brl(g.target)}</div>
-</div>
 
-<button class="btn smallbtn" onclick="addGoal(${i})">
-Adicionar
-</button>
+    return `
 
-</div>
+      <div
+        class="row"
+        style="display:block"
+      >
 
-<div class="goalbar">
-<i style="width:${pct}%"></i>
-</div>
+        <div
+          style="
+            display:flex;
+            justify-content:space-between;
+            gap:10px
+          "
+        >
 
-</div>
-`;
+          <div>
 
-}).join('')
-:'<div class="empty">Crie uma meta para começar.</div>';
+            <b>
+              ${esc(g.name)}
+            </b>
+
+            <div class="small">
+
+              ${brl(g.current)}
+              de
+              ${brl(g.target)}
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="btn smallbtn"
+            onclick="addGoal(${i})"
+          >
+            Adicionar
+          </button>
+
+        </div>
+
+
+        <div class="goalbar">
+
+          <i style="width:${pct}%"></i>
+
+        </div>
+
+      </div>
+
+    `;
+
+  })
+  .join('')
+
+  :
+
+  '<div class="empty">Crie uma meta para começar.</div>';
 
 }
+
+
+/* =========================================================
+   MODAL LANÇAMENTO
+========================================================= */
 
 function openModal(type,existing=null){
 
-document.getElementById('modalTitle').textContent=
-existing
-?'Editar lançamento'
-:type==='income'
-?'Nova entrada'
-:'Novo gasto';
+  document
+  .getElementById('modalTitle')
+  .textContent=
+  existing
+  ?
+  'Editar lançamento'
+  :
+  type==='income'
+  ?
+  'Nova entrada'
+  :
+  'Novo gasto';
 
-let e=existing||{};
 
-document.getElementById('form').innerHTML=`
+  let e=existing||{};
 
-<div class="field">
-<label>Descrição</label>
-<input name="desc" required placeholder="Ex.: Mercado" value="${esc(e.desc||'')}">
-</div>
 
-<div class="field">
-<label>Valor</label>
-<input name="value" required type="number" step="0.01" min="0.01" value="${e.value??''}">
-</div>
+  document
+  .getElementById('form')
+  .innerHTML=`
 
-<div class="field">
-<label>Pessoa</label>
+    <div class="field">
 
-<select name="person">
-${['Guilherme','Isa','Compartilhado']
-.map(p=>`<option ${e.person===p?'selected':''}>${p}</option>`)
-.join('')}
-</select>
+      <label>
+        Descrição
+      </label>
 
-</div>
+      <input
+        name="desc"
+        required
+        placeholder="Ex.: Mercado"
+        value="${esc(e.desc||'')}"
+      >
 
-<div class="field">
+    </div>
 
-<label>Categoria</label>
 
-<div class="quickcats">
+    <div class="field">
 
-${['Alimentação','Casa','Transporte','Lazer','Saúde','Assinaturas','Educação','Viagem','Outros']
-.map(c=>`
-<button type="button"
-onclick="this.closest('.form').querySelector('[name=category]').value='${c}'">
-${c}
-</button>
-`)
-.join('')}
+      <label>
+        Valor
+      </label>
 
-</div>
+      <input
+        name="value"
+        required
+        type="number"
+        step="0.01"
+        min="0.01"
+        value="${e.value??''}"
+      >
 
-<select name="category">
-<option>Alimentação</option>
-<option>Casa</option>
-<option>Transporte</option>
-<option>Lazer</option>
-<option>Saúde</option>
-<option>Assinaturas</option>
-<option>Educação</option>
-<option>Viagem</option>
-<option>Outros</option>
-</select>
+    </div>
 
-</div>
 
-<div class="field">
-<label>Data</label>
-<input name="date" type="date" value="${e.date||today()}">
-</div>
+    <div class="field">
 
-<div class="field">
+      <label>
+        Pessoa
+      </label>
 
-<label>
-<input name="installments" type="checkbox"
-${e.installment?'checked':''}
-onchange="toggleInstallments(this)">
-Parcelar gasto
-</label>
+      <select name="person">
 
-<div id="installmentBox" class="hidden">
-<input name="totalInstallments"
-type="number"
-min="2"
-max="48"
-value="${e.installment?.total||2}"
-placeholder="Número de parcelas">
-</div>
+        ${
+          [
+            'Guilherme',
+            'Isa',
+            'Compartilhado'
+          ]
+          .map(
+            p=>
+            `<option ${
+              e.person===p?'selected':''
+            }>${p}</option>`
+          )
+          .join('')
+        }
 
-</div>
+      </select>
 
-<div class="form-actions">
+    </div>
 
-<button type="button" class="btn" onclick="closeModal()">
-Cancelar
-</button>
 
-<button class="btn primary">
-Salvar
-</button>
+    <div class="field">
 
-</div>
-`;
+      <label>
+        Categoria
+      </label>
 
-document.querySelector('[name=category]').value=e.category||'Outros';
 
-document.getElementById('form').onsubmit=
-event=>submitTx(event,type,existing?.id);
+      <div class="quickcats">
 
-document.getElementById('modal').classList.add('show');
+        ${
+          [
+            'Alimentação',
+            'Casa',
+            'Transporte',
+            'Lazer',
+            'Saúde',
+            'Assinaturas',
+            'Educação',
+            'Viagem',
+            'Outros'
+          ]
+          .map(
+            c=>
+            `
+            <button
+              type="button"
+              onclick="
+                this.closest('.form')
+                .querySelector('[name=category]')
+                .value='${c}'
+              "
+            >
+              ${c}
+            </button>
+            `
+          )
+          .join('')
+        }
+
+      </div>
+
+
+      <select name="category">
+
+        <option>Alimentação</option>
+        <option>Casa</option>
+        <option>Transporte</option>
+        <option>Lazer</option>
+        <option>Saúde</option>
+        <option>Assinaturas</option>
+        <option>Educação</option>
+        <option>Viagem</option>
+        <option>Outros</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Data
+      </label>
+
+      <input
+        name="date"
+        type="date"
+        value="${e.date||today()}"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+
+        <input
+          name="installments"
+          type="checkbox"
+          ${
+            e.installment
+            ?
+            'checked'
+            :
+            ''
+          }
+          onchange="toggleInstallments(this)"
+        >
+
+        Parcelar gasto
+
+      </label>
+
+
+      <div
+        id="installmentBox"
+        class="${
+          e.installment
+          ?
+          ''
+          :
+          'hidden'
+        }"
+      >
+
+        <input
+          name="totalInstallments"
+          type="number"
+          min="2"
+          max="48"
+          value="${e.installment?.total||2}"
+          placeholder="Número de parcelas"
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="form-actions">
+
+      <button
+        type="button"
+        class="btn"
+        onclick="closeModal()"
+      >
+        Cancelar
+      </button>
+
+      <button
+        class="btn primary"
+      >
+        Salvar
+      </button>
+
+    </div>
+
+  `;
+
+
+  document
+  .querySelector('[name=category]')
+  .value=
+  e.category||'Outros';
+
+
+  document
+  .getElementById('form')
+  .onsubmit=
+  event=>
+  submitTx(
+    event,
+    type,
+    existing?.id
+  );
+
+
+  document
+  .getElementById('modal')
+  .classList
+  .add('show');
 
 }
+
 
 function toggleInstallments(el){
-document.getElementById('installmentBox')
-.classList.toggle('hidden',!el.checked);
+
+  document
+  .getElementById('installmentBox')
+  .classList
+  .toggle(
+    'hidden',
+    !el.checked
+  );
+
 }
 
-function submitTx(event,type,id){
 
-event.preventDefault();
-
-let f=new FormData(event.target);
-
-let value=Number(f.get('value'));
-let date=f.get('date')||today();
-let desc=f.get('desc');
-let person=f.get('person');
-let category=f.get('category');
-let total=Number(f.get('totalInstallments')||0);
-
-if(id){
-
-let old=db.transactions.find(x=>x.id===id);
-
-Object.assign(old,{
-type,
-desc,
-value,
-person,
-category,
-date
-});
-
-}else if(
-type==='expense' &&
-f.get('installments')==='on' &&
-total>1
+async function submitTx(
+  event,
+  type,
+  id
 ){
 
-let per=Math.round(value/total*100)/100;
+  event.preventDefault();
 
-for(let i=1;i<=total;i++){
 
-let d=new Date(date+'T12:00');
+  let f =
+  new FormData(event.target);
 
-d.setMonth(d.getMonth()+i-1);
 
-db.transactions.push({
-id:uid(),
-type,
-desc:`${desc} (${i}/${total})`,
-value:i===total
-?Math.round((value-per*(total-1))*100)/100
-:per,
-person,
-category,
-date:d.toISOString().slice(0,10),
-installment:{
-current:i,
-total
+  let value =
+  Number(f.get('value'));
+
+
+  let date =
+  f.get('date')||today();
+
+
+  let desc =
+  f.get('desc');
+
+
+  let person =
+  f.get('person');
+
+
+  let category =
+  f.get('category');
+
+
+  let total =
+  Number(
+    f.get('totalInstallments')||0
+  );
+
+
+  if(id){
+
+    let old =
+    db.transactions.find(
+      x=>x.id===id
+    );
+
+
+    if(old){
+
+      Object.assign(
+        old,
+        {
+          type,
+          desc,
+          value,
+          person,
+          category,
+          date
+        }
+      );
+
+    }
+
+  }
+
+  else if(
+    type==='expense' &&
+    f.get('installments')==='on' &&
+    total>1
+  ){
+
+    let per =
+    Math.round(
+      value/total*100
+    )/100;
+
+
+    for(
+      let i=1;
+      i<=total;
+      i++
+    ){
+
+      let d =
+      new Date(
+        date+'T12:00'
+      );
+
+
+      d.setMonth(
+        d.getMonth()+i-1
+      );
+
+
+      db.transactions.push({
+
+        id:uid(),
+
+        type,
+
+        desc:
+        `${desc} (${i}/${total})`,
+
+        value:
+        i===total
+        ?
+        Math.round(
+          (
+            value-
+            per*(total-1)
+          )*100
+        )/100
+        :
+        per,
+
+        person,
+
+        category,
+
+        date:
+        d.toISOString()
+        .slice(0,10),
+
+        installment:{
+          current:i,
+          total
+        }
+
+      });
+
+    }
+
+  }
+
+  else{
+
+    db.transactions.push({
+
+      id:uid(),
+
+      type,
+
+      desc,
+
+      value,
+
+      person,
+
+      category,
+
+      date
+
+    });
+
+  }
+
+
+  if(
+    type==='expense' &&
+    !id
+  ){
+
+    createNotification(
+      `Novo gasto registrado: ${desc} — ${brl(value)} (${person})`
+    );
+
+  }
+
+
+  await save();
+
+  closeModal();
+
 }
-});
 
-}
 
-}else{
-
-db.transactions.push({
-id:uid(),
-type,
-desc,
-value,
-person,
-category,
-date
-});
-
-}
-
-if(type==='expense'&&!id)
-createNotification(
-`Novo gasto registrado: ${desc} — ${brl(value)} (${person})`
-);
-
-save();
-closeModal();
-
-}
+/* =========================================================
+   EDITAR / EXCLUIR
+========================================================= */
 
 function editTx(id){
 
-let x=db.transactions.find(t=>t.id===id);
+  let x =
+  db.transactions.find(
+    t=>t.id===id
+  );
 
-if(x)openModal(x.type,x);
 
-}
-
-function deleteTx(id){
-
-let x=db.transactions.find(t=>t.id===id);
-
-if(!x)return;
-
-if(confirm(`Excluir "${x.desc}"?`)){
-
-db.transactions=db.transactions.filter(t=>t.id!==id);
-
-save();
+  if(x)
+    openModal(
+      x.type,
+      x
+    );
 
 }
 
+
+async function deleteTx(id){
+
+  let x =
+  db.transactions.find(
+    t=>t.id===id
+  );
+
+
+  if(!x)
+    return;
+
+
+  if(
+    confirm(
+      `Excluir "${x.desc}"?`
+    )
+  ){
+
+    db.transactions =
+    db.transactions.filter(
+      t=>t.id!==id
+    );
+
+
+    await save();
+
+
+    /*
+      Também remove do banco.
+    */
+
+    try{
+
+      await sb(
+        '/rest/v1/transactions?id=eq.'+
+        encodeURIComponent(id)+
+        '&couple_id=eq.'+
+        encodeURIComponent(coupleId),
+        {
+          method:'DELETE'
+        }
+      );
+
+    }catch(e){
+
+      console.warn(e);
+
+    }
+
+  }
+
 }
+
+
+/* =========================================================
+   CONTAS
+========================================================= */
 
 function openBill(){
 
-document.getElementById('modalTitle').textContent='Nova conta';
+  document
+  .getElementById('modalTitle')
+  .textContent=
+  'Nova conta';
 
-document.getElementById('form').innerHTML=`
 
-<div class="field">
-<label>Nome da conta</label>
-<input name="name" required placeholder="Ex.: Internet">
-</div>
+  document
+  .getElementById('form')
+  .innerHTML=`
 
-<div class="field">
-<label>Valor</label>
-<input name="value" required type="number" step="0.01" min="0.01">
-</div>
+    <div class="field">
 
-<div class="field">
-<label>Vencimento</label>
-<input name="due" type="date" required value="${today()}">
-</div>
+      <label>
+        Nome da conta
+      </label>
 
-<div class="field">
-<label>Responsável</label>
-<select name="person">
-<option>Guilherme</option>
-<option>Isa</option>
-<option>Compartilhado</option>
-</select>
-</div>
+      <input
+        name="name"
+        required
+        placeholder="Ex.: Internet"
+      >
 
-<div class="form-actions">
-<button type="button" class="btn" onclick="closeModal()">Cancelar</button>
-<button class="btn primary">Salvar</button>
-</div>
-`;
+    </div>
 
-document.getElementById('form').onsubmit=e=>{
 
-e.preventDefault();
+    <div class="field">
 
-let f=new FormData(e.target);
+      <label>
+        Valor
+      </label>
 
-db.bills.push({
-id:uid(),
-name:f.get('name'),
-value:Number(f.get('value')),
-due:f.get('due'),
-person:f.get('person'),
-paid:false
-});
+      <input
+        name="value"
+        required
+        type="number"
+        step="0.01"
+        min="0.01"
+      >
 
-save();
-closeModal();
+    </div>
 
-};
 
-document.getElementById('modal').classList.add('show');
+    <div class="field">
+
+      <label>
+        Vencimento
+      </label>
+
+      <input
+        name="due"
+        type="date"
+        required
+        value="${today()}"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Responsável
+      </label>
+
+      <select name="person">
+
+        <option>Guilherme</option>
+        <option>Isa</option>
+        <option>Compartilhado</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-actions">
+
+      <button
+        type="button"
+        class="btn"
+        onclick="closeModal()"
+      >
+        Cancelar
+      </button>
+
+      <button class="btn primary">
+        Salvar
+      </button>
+
+    </div>
+
+  `;
+
+
+  document
+  .getElementById('form')
+  .onsubmit=
+  async e=>{
+
+    e.preventDefault();
+
+
+    let f =
+    new FormData(e.target);
+
+
+    db.bills.push({
+
+      id:uid(),
+
+      name:f.get('name'),
+
+      value:
+      Number(
+        f.get('value')
+      ),
+
+      due:f.get('due'),
+
+      person:f.get('person'),
+
+      paid:false
+
+    });
+
+
+    await save();
+
+    closeModal();
+
+  };
+
+
+  document
+  .getElementById('modal')
+  .classList
+  .add('show');
 
 }
 
-function payBill(id){
 
-let b=db.bills.find(x=>x.id===id);
+async function payBill(id){
 
-if(!b||b.paid)return;
+  let b =
+  db.bills.find(
+    x=>x.id===id
+  );
 
-if(confirm('Marcar esta conta como paga?')){
 
-b.paid=true;
+  if(!b || b.paid)
+    return;
 
-db.transactions.push({
-id:uid(),
-type:'expense',
-desc:b.name,
-value:b.value,
-person:b.person,
-category:'Conta',
-date:today()
-});
 
-createNotification(
-`Conta paga: ${b.name} — ${brl(b.value)} (${b.person})`
-);
+  if(
+    confirm(
+      'Marcar esta conta como paga?'
+    )
+  ){
 
-save();
+    b.paid=true;
+
+    b.paidAt=
+    new Date().toISOString();
+
+
+    db.transactions.push({
+
+      id:uid(),
+
+      type:'expense',
+
+      desc:b.name,
+
+      value:b.value,
+
+      person:b.person,
+
+      category:'Conta',
+
+      date:today()
+
+    });
+
+
+    createNotification(
+      `Conta paga: ${b.name} — ${brl(b.value)} (${b.person})`
+    );
+
+
+    await save();
+
+  }
 
 }
 
-}
+
+/* =========================================================
+   METAS
+========================================================= */
 
 function openGoal(){
 
-document.getElementById('modalTitle').textContent='Nova meta';
+  document
+  .getElementById('modalTitle')
+  .textContent=
+  'Nova meta';
 
-document.getElementById('form').innerHTML=`
 
-<div class="field">
-<label>Nome da meta</label>
-<input name="name" required placeholder="Ex.: Viagem">
-</div>
+  document
+  .getElementById('form')
+  .innerHTML=`
 
-<div class="field">
-<label>Valor alvo</label>
-<input name="target" required type="number" step="0.01" min="1">
-</div>
+    <div class="field">
 
-<div class="form-actions">
-<button type="button" class="btn" onclick="closeModal()">Cancelar</button>
-<button class="btn primary">Criar meta</button>
-</div>
-`;
+      <label>
+        Nome da meta
+      </label>
 
-document.getElementById('form').onsubmit=e=>{
+      <input
+        name="name"
+        required
+        placeholder="Ex.: Viagem"
+      >
 
-e.preventDefault();
+    </div>
 
-let f=new FormData(e.target);
 
-db.goals.push({
-name:f.get('name'),
-target:Number(f.get('target')),
-current:0
-});
+    <div class="field">
 
-save();
-closeModal();
+      <label>
+        Valor alvo
+      </label>
 
-};
+      <input
+        name="target"
+        required
+        type="number"
+        step="0.01"
+        min="1"
+      >
 
-document.getElementById('modal').classList.add('show');
+    </div>
+
+
+    <div class="form-actions">
+
+      <button
+        type="button"
+        class="btn"
+        onclick="closeModal()"
+      >
+        Cancelar
+      </button>
+
+      <button class="btn primary">
+        Criar meta
+      </button>
+
+    </div>
+
+  `;
+
+
+  document
+  .getElementById('form')
+  .onsubmit=
+  async e=>{
+
+    e.preventDefault();
+
+
+    let f =
+    new FormData(e.target);
+
+
+    db.goals.push({
+
+      id:uid(),
+
+      name:f.get('name'),
+
+      target:
+      Number(
+        f.get('target')
+      ),
+
+      current:0
+
+    });
+
+
+    await save();
+
+    closeModal();
+
+  };
+
+
+  document
+  .getElementById('modal')
+  .classList
+  .add('show');
 
 }
 
-function addGoal(i){
 
-let v=Number(
-prompt('Quanto deseja adicionar à meta?','50')
-);
+async function addGoal(i){
 
-if(v>0){
+  let v =
+  Number(
+    prompt(
+      'Quanto deseja adicionar à meta?',
+      '50'
+    )
+  );
 
-db.goals[i].current+=v;
 
-save();
+  if(v>0){
+
+    db.goals[i].current+=v;
+
+    await save();
+
+  }
 
 }
 
-}
+
+/* =========================================================
+   NOTIFICAÇÕES
+========================================================= */
 
 function createNotification(text){
 
-db.notifications.unshift({
-id:uid(),
-text,
-date:new Date().toISOString()
-});
+  db.notifications.unshift({
 
-db.notifications=db.notifications.slice(0,20);
+    id:uid(),
+
+    text,
+
+    date:
+    new Date().toISOString()
+
+  });
+
+
+  db.notifications =
+  db.notifications.slice(
+    0,
+    20
+  );
 
 }
 
+
 function renderWa(){
 
-let latest=db.notifications[0]?.text||
-'Nenhuma movimentação recente. O próximo evento aparecerá aqui.';
+  let latest =
+  db.notifications[0]?.text ||
+  'Nenhuma movimentação recente. O próximo evento aparecerá aqui.';
 
-document.getElementById('waPreview').textContent=
-`💰 Finanças a Dois
+
+  document
+  .getElementById('waPreview')
+  .textContent=
+
+`Finanças a Dois
 
 ${latest}
 
@@ -912,75 +3380,156 @@ Guilherme & Isa`;
 
 }
 
+
 function copyWa(){
 
-navigator.clipboard?.writeText(
-document.getElementById('waPreview').textContent
-);
+  navigator
+  .clipboard
+  ?.writeText(
+    document
+    .getElementById('waPreview')
+    .textContent
+  );
 
-document.getElementById('waStatus').textContent=
-'Mensagem copiada para a área de transferência.';
+
+  document
+  .getElementById('waStatus')
+  .textContent=
+  'Mensagem copiada para a área de transferência.';
 
 }
+
 
 function simulateWa(){
 
-document.getElementById('waStatus').textContent=
-'Simulação concluída. Na versão com backend, este evento será enviado pelo WhatsApp oficial.';
+  document
+  .getElementById('waStatus')
+  .textContent=
+  'Simulação concluída.';
 
 }
 
-function simulateAccount(){
 
-document.getElementById('accountStatus').textContent=
-'Estrutura de casal validada. Próximo passo: conectar autenticação e banco compartilhado.';
-
-}
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
 
 function shiftMonth(delta){
 
-let input=document.getElementById('monthFilter');
+  let input =
+  document
+  .getElementById('monthFilter');
 
-let d=new Date(input.value+'-01T12:00');
 
-d.setMonth(d.getMonth()+delta);
+  let d =
+  new Date(
+    input.value+'-01T12:00'
+  );
 
-input.value=d.toISOString().slice(0,7);
 
-render();
+  d.setMonth(
+    d.getMonth()+delta
+  );
+
+
+  input.value =
+  d.toISOString()
+  .slice(0,7);
+
+
+  render();
 
 }
+
 
 function closeModal(){
 
-document.getElementById('modal')
-.classList.remove('show');
+  document
+  .getElementById('modal')
+  .classList
+  .remove('show');
 
 }
+
 
 function switchTab(t){
 
-document.querySelectorAll('.tab')
-.forEach(b=>b.classList.toggle(
-'active',
-b.dataset.tab===t
-));
+  document
+  .querySelectorAll('.tab')
+  .forEach(
+    b=>
+    b.classList.toggle(
+      'active',
+      b.dataset.tab===t
+    )
+  );
 
-document.querySelectorAll('.tabpage')
-.forEach(p=>p.classList.toggle(
-'hidden',
-p.id!==t
-));
+
+  document
+  .querySelectorAll('.tabpage')
+  .forEach(
+    p=>
+    p.classList.toggle(
+      'hidden',
+      p.id!==t
+    )
+  );
 
 }
 
-document.querySelectorAll('.tab')
-.forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
 
-document.getElementById('monthFilter').value=
-new Date().toISOString().slice(0,7);
+document
+.querySelectorAll('.tab')
+.forEach(
+  b=>
+  b.onclick=
+  ()=>
+  switchTab(
+    b.dataset.tab
+  )
+);
 
-render();
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function setSyncStatus(text){
+
+  const el =
+  document
+  .getElementById('syncStatus');
+
+  if(el)
+    el.textContent=text;
+
+}
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
+
+document
+.getElementById('monthFilter')
+.value=
+new Date()
+.toISOString()
+.slice(0,7);
+
+
+if(session){
+
+  startApp();
+
+}else{
+
+  document
+  .getElementById('authScreen')
+  .classList
+  .remove('hidden');
+
+}
 
 </script>
 
