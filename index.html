@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Finanças a Dois</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 :root{
   --bg:#f5f7f6;
@@ -16,7 +18,6 @@
   --green2:#e9f7ef;
   --red:#c83b3b;
   --red2:#fff0f0;
-  --blue:#356ae6;
   --shadow:0 10px 30px #17211b0d
 }
 
@@ -29,32 +30,22 @@ body{
   color:var(--text)
 }
 
-button,input,select{
-  font:inherit
-}
+button,input,select{font:inherit}
+button{-webkit-tap-highlight-color:transparent}
 
-button{
-  -webkit-tap-highlight-color:transparent
-}
-
-.hidden{
-  display:none!important
-}
-
-/* AUTH */
+.hidden{display:none!important}
 
 .auth-screen{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px;
-  background:var(--bg)
+  padding:20px
 }
 
 .auth-card{
   width:min(430px,100%);
-  background:var(--surface);
+  background:#fff;
   border:1px solid var(--line);
   border-radius:24px;
   padding:28px;
@@ -69,7 +60,7 @@ button{
   place-items:center;
   background:var(--green2);
   color:var(--green);
-  font-size:24px;
+  font-size:22px;
   font-weight:900;
   margin-bottom:16px
 }
@@ -108,7 +99,6 @@ button{
   padding:13px 14px;
   border:1px solid var(--line);
   border-radius:12px;
-  background:#fff;
   outline:none
 }
 
@@ -120,24 +110,17 @@ button{
 .auth-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:3px
+  gap:9px
 }
 
 .auth-message{
   min-height:18px;
   font-size:12px;
-  color:var(--muted);
-  margin-top:2px
+  color:var(--muted)
 }
 
-.auth-message.error{
-  color:var(--red)
-}
-
-.auth-message.success{
-  color:var(--green)
-}
+.auth-message.error{color:var(--red)}
+.auth-message.success{color:var(--green)}
 
 .auth-note{
   margin-top:18px;
@@ -150,12 +133,9 @@ button{
   line-height:1.5
 }
 
-/* APP */
-
 .app{
   min-height:100vh;
-  padding:20px;
-  background:var(--bg)
+  padding:20px
 }
 
 .wrap{
@@ -191,7 +171,7 @@ button{
 
 .btn{
   border:1px solid var(--line);
-  background:var(--surface);
+  background:#fff;
   color:var(--text);
   padding:10px 14px;
   border-radius:12px;
@@ -199,13 +179,9 @@ button{
   font-weight:700
 }
 
-.btn:hover{
-  filter:brightness(.98)
-}
-
 .btn.primary{
   background:var(--green);
-  color:white;
+  color:#fff;
   border-color:var(--green)
 }
 
@@ -219,9 +195,7 @@ button{
   font-size:12px
 }
 
-.btn.logout{
-  color:var(--muted)
-}
+.btn.logout{color:var(--muted)}
 
 .grid{
   display:grid;
@@ -230,7 +204,7 @@ button{
 }
 
 .card{
-  background:var(--surface);
+  background:#fff;
   border:1px solid var(--line);
   border-radius:18px;
   padding:18px;
@@ -249,17 +223,10 @@ button{
   margin-top:7px
 }
 
-.pos{
-  color:var(--green)
-}
+.pos{color:var(--green)}
+.neg{color:var(--red)}
 
-.neg{
-  color:var(--red)
-}
-
-.section{
-  margin-top:18px
-}
+.section{margin-top:18px}
 
 .section-head{
   display:flex;
@@ -294,9 +261,7 @@ button{
   gap:12px
 }
 
-.row:last-child{
-  border-bottom:0
-}
+.row:last-child{border-bottom:0}
 
 .left{
   display:flex;
@@ -331,7 +296,7 @@ button{
 
 .tab{
   border:1px solid var(--line);
-  background:var(--surface);
+  background:#fff;
   color:var(--text);
   padding:9px 13px;
   border-radius:11px;
@@ -341,7 +306,7 @@ button{
 
 .tab.active{
   background:var(--text);
-  color:white
+  color:#fff
 }
 
 .empty{
@@ -377,12 +342,10 @@ button{
   z-index:10
 }
 
-.modal.show{
-  display:flex
-}
+.modal.show{display:flex}
 
 .modal-box{
-  background:var(--surface);
+  background:#fff;
   width:min(560px,100%);
   border-radius:22px;
   padding:20px;
@@ -393,8 +356,7 @@ button{
 .modal-head{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:10px
+  align-items:center
 }
 
 .modal-head h2{
@@ -432,13 +394,8 @@ button{
   padding:11px;
   border:1px solid var(--line);
   border-radius:11px;
-  background:var(--surface);
+  background:#fff;
   outline:none
-}
-
-.field input:focus,
-.field select:focus{
-  border-color:var(--green)
 }
 
 .form-actions{
@@ -480,7 +437,7 @@ button{
 .toolbar input,
 .toolbar select{
   border:1px solid var(--line);
-  background:var(--surface);
+  background:#fff;
   padding:9px 11px;
   border-radius:11px;
   min-width:150px
@@ -492,9 +449,7 @@ button{
   gap:8px
 }
 
-.monthbar input{
-  width:145px
-}
+.monthbar input{width:145px}
 
 .quickcats{
   display:flex;
@@ -559,176 +514,139 @@ button{
 }
 
 .account-email{
-  max-width:190px;
+  max-width:220px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap
 }
 
 @media(max-width:800px){
-  .grid{
-    grid-template-columns:repeat(2,1fr)
-  }
-
-  .two{
-    grid-template-columns:1fr
-  }
-
-  .app{
-    padding:14px
-  }
-
-  .top{
-    align-items:flex-start
-  }
-
-  .brand{
-    font-size:21px
-  }
-
-  .actions .btn span{
-    display:none
-  }
-
-  .toolbar input{
-    flex:1
-  }
-
-  .monthbar{
-    width:100%;
-    justify-content:space-between
-  }
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
+  .app{padding:14px}
 }
 
 @media(max-width:560px){
-  .top{
-    flex-direction:column
-  }
-
-  .actions{
-    width:100%;
-    justify-content:flex-start
-  }
-
-  .actions .btn{
-    flex:1
-  }
-
-  .auth-card{
-    padding:22px
-  }
+  .top{flex-direction:column;align-items:flex-start}
+  .actions{width:100%;justify-content:flex-start}
+  .actions .btn{flex:1}
+  .auth-card{padding:22px}
 }
 
 @media(max-width:480px){
-  .grid{
-    grid-template-columns:1fr 1fr
-  }
-
-  .value{
-    font-size:20px
-  }
-
-  .card{
-    padding:14px
-  }
-
-  .top{
-    gap:10px
-  }
-
-  .actions{
-    flex-shrink:0
-  }
-
-  .row{
-    align-items:flex-start
-  }
-
-  .row>div:last-child{
-    text-align:right
-  }
-
-  .auth-actions{
-    grid-template-columns:1fr
-  }
+  .value{font-size:20px}
+  .card{padding:14px}
+  .auth-actions{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN / CADASTRO
-========================= -->
-
 <section class="auth-screen" id="authScreen">
-
   <div class="auth-card">
-
     <div class="auth-logo">R$</div>
 
     <h1 class="auth-title">Finanças a Dois</h1>
 
     <div class="auth-subtitle">
-      Organize o dinheiro do casal de forma simples, rápida e sem complicação.
+      Organize o dinheiro do casal de forma simples e compartilhada.
     </div>
 
     <form class="auth-form" id="authForm">
 
       <div class="auth-field">
         <label for="authEmail">E-mail</label>
-        <input
-          id="authEmail"
-          type="email"
-          autocomplete="email"
-          placeholder="seu@email.com"
-          required
-        >
+        <input id="authEmail" type="email" autocomplete="email"
+          placeholder="seu@email.com" required>
       </div>
 
       <div class="auth-field">
         <label for="authPassword">Senha</label>
-        <input
-          id="authPassword"
-          type="password"
+        <input id="authPassword" type="password"
           autocomplete="current-password"
-          placeholder="Mínimo de 6 caracteres"
-          minlength="6"
-          required
-        >
+          placeholder="Sua senha" minlength="6" required>
       </div>
 
       <div class="auth-actions">
-
-        <button
-          type="button"
-          class="btn"
-          id="signupBtn"
-        >
-          Criar conta
-        </button>
-
-        <button
-          type="submit"
-          class="btn primary"
-        >
+        <button type="submit" class="btn primary">
           Entrar
         </button>
-
       </div>
 
-      <div
-        id="authMessage"
-        class="auth-message"
-        aria-live="polite"
-      ></div>
+      <div id="authMessage" class="auth-message" aria-live="polite"></div>
 
     </form>
 
     <div class="auth-note">
-      Esta versão é um protótipo local. O cadastro fica salvo apenas neste
-      navegador. A sincronização entre celulares será adicionada quando
-      conectarmos um banco de dados.
+      Guilherme e Isa usam a mesma conta financeira.
+      Os dados ficam salvos online e podem ser acessados pelos dois celulares.
+    </div>
+  </div>
+</section>
+
+
+<div class="app hidden" id="app">
+
+<div class="wrap">
+
+<header class="top">
+
+  <div>
+    <div class="brand">Finanças a Dois</div>
+    <div class="sub">
+      Guilherme & Isa · controle compartilhado
+    </div>
+  </div>
+
+  <div class="actions">
+
+    <button class="btn" onclick="openModal('income')">
+      + Entrada
+    </button>
+
+    <button class="btn primary" onclick="openModal('expense')">
+      + Gasto
+    </button>
+
+    <button class="btn logout" onclick="logout()">
+      Sair
+    </button>
+
+  </div>
+
+</header>
+
+
+<section class="card" style="margin-bottom:12px">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="label">
+        Período do painel
+      </div>
+
+      <div class="monthbar">
+
+        <button class="btn smallbtn" onclick="shiftMonth(-1)">
+          ‹
+        </button>
+
+        <input id="monthFilter" type="month" onchange="render()">
+
+        <button class="btn smallbtn" onclick="shiftMonth(1)">
+          ›
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="status">
+      <i></i>
+      Sincronização ativa
     </div>
 
   </div>
@@ -736,738 +654,452 @@ button{
 </section>
 
 
-<!-- =========================
-     APLICAÇÃO
-========================= -->
+<div class="grid" id="cards"></div>
 
-<div class="app hidden" id="app">
 
-  <div class="wrap">
+<div class="tabs">
 
-    <!-- HEADER -->
+  <button class="tab active" data-tab="home">
+    Visão geral
+  </button>
 
-    <header class="top">
+  <button class="tab" data-tab="history">
+    Histórico
+  </button>
 
-      <div>
+  <button class="tab" data-tab="bills">
+    Contas
+  </button>
 
-        <div class="brand">
-          Finanças a Dois
-        </div>
+  <button class="tab" data-tab="goals">
+    Metas
+  </button>
 
-        <div class="sub">
-          Guilherme & Isa · controle simples do dinheiro
-        </div>
+  <button class="tab" data-tab="couple">
+    Casal
+  </button>
 
-      </div>
-
-      <div class="actions">
-
-        <button
-          class="btn"
-          onclick="openModal('income')"
-        >
-          <span>+ </span>Entrada
-        </button>
-
-        <button
-          class="btn primary"
-          onclick="openModal('expense')"
-        >
-          <span>+ </span>Gasto
-        </button>
-
-        <button
-          class="btn logout"
-          onclick="logout()"
-          title="Sair"
-        >
-          Sair
-        </button>
-
-      </div>
-
-    </header>
-
-
-    <!-- PERÍODO -->
-
-    <section
-      class="card"
-      style="margin-bottom:12px"
-    >
-
-      <div class="section-head">
-
-        <div>
-
-          <div class="label">
-            Período do painel
-          </div>
-
-          <div class="monthbar">
-
-            <button
-              class="btn smallbtn"
-              onclick="shiftMonth(-1)"
-            >
-              ‹
-            </button>
-
-            <input
-              id="monthFilter"
-              type="month"
-              onchange="render()"
-            >
-
-            <button
-              class="btn smallbtn"
-              onclick="shiftMonth(1)"
-            >
-              ›
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="status">
-          <i></i>
-          Dados salvos localmente
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CARDS -->
-
-    <div
-      class="grid"
-      id="cards"
-    ></div>
-
-
-    <!-- TABS -->
-
-    <div class="tabs">
-
-      <button
-        class="tab active"
-        data-tab="home"
-      >
-        Visão geral
-      </button>
-
-      <button
-        class="tab"
-        data-tab="history"
-      >
-        Histórico
-      </button>
-
-      <button
-        class="tab"
-        data-tab="bills"
-      >
-        Contas
-      </button>
-
-      <button
-        class="tab"
-        data-tab="goals"
-      >
-        Metas
-      </button>
-
-      <button
-        class="tab"
-        data-tab="couple"
-      >
-        Casal
-      </button>
-
-      <button
-        class="tab"
-        data-tab="notify"
-      >
-        WhatsApp
-      </button>
-
-    </div>
-
-
-    <!-- =========================
-         VISÃO GERAL
-    ========================== -->
-
-    <main
-      id="home"
-      class="tabpage"
-    >
-
-      <div class="two">
-
-        <section class="card">
-
-          <div class="section-head">
-
-            <h2>
-              Movimentações recentes
-            </h2>
-
-            <button
-              class="btn"
-              onclick="openModal('expense')"
-            >
-              Novo
-            </button>
-
-          </div>
-
-          <div
-            class="list"
-            id="recent"
-          ></div>
-
-        </section>
-
-
-        <section class="card">
-
-          <div class="section-head">
-
-            <h2>
-              Por pessoa
-            </h2>
-
-          </div>
-
-          <div id="people"></div>
-
-        </section>
-
-      </div>
-
-
-      <section class="section card">
-
-        <div class="section-head">
-
-          <h2>
-            Contas próximas
-          </h2>
-
-          <button
-            class="btn"
-            onclick="switchTab('bills')"
-          >
-            Ver todas
-          </button>
-
-        </div>
-
-        <div id="upcoming"></div>
-
-      </section>
-
-    </main>
-
-
-    <!-- =========================
-         HISTÓRICO
-    ========================== -->
-
-    <main
-      id="history"
-      class="tabpage hidden"
-    >
-
-      <section class="card">
-
-        <div class="section-head">
-
-          <h2>
-            Histórico
-          </h2>
-
-        </div>
-
-        <div class="toolbar">
-
-          <input
-            id="search"
-            placeholder="Buscar gasto, categoria..."
-            oninput="renderHistory()"
-          >
-
-          <select
-            id="filterPerson"
-            onchange="renderHistory()"
-          >
-            <option>Todos</option>
-            <option>Guilherme</option>
-            <option>Isa</option>
-            <option>Compartilhado</option>
-          </select>
-
-          <select
-            id="filterType"
-            onchange="renderHistory()"
-          >
-            <option value="all">
-              Entradas e gastos
-            </option>
-
-            <option value="expense">
-              Só gastos
-            </option>
-
-            <option value="income">
-              Só entradas
-            </option>
-          </select>
-
-        </div>
-
-        <div id="historyList"></div>
-
-      </section>
-
-    </main>
-
-
-    <!-- =========================
-         CONTAS
-    ========================== -->
-
-    <main
-      id="bills"
-      class="tabpage hidden"
-    >
-
-      <section class="card">
-
-        <div class="section-head">
-
-          <h2>
-            Contas a pagar
-          </h2>
-
-          <button
-            class="btn primary"
-            onclick="openBill()"
-          >
-            + Conta
-          </button>
-
-        </div>
-
-        <div id="billsList"></div>
-
-      </section>
-
-    </main>
-
-
-    <!-- =========================
-         METAS
-    ========================== -->
-
-    <main
-      id="goals"
-      class="tabpage hidden"
-    >
-
-      <section class="card">
-
-        <div class="section-head">
-
-          <h2>
-            Metas
-          </h2>
-
-          <button
-            class="btn primary"
-            onclick="openGoal()"
-          >
-            + Meta
-          </button>
-
-        </div>
-
-        <div id="goalsList"></div>
-
-      </section>
-
-    </main>
-
-
-    <!-- =========================
-         CASAL
-    ========================== -->
-
-    <main
-      id="couple"
-      class="tabpage hidden"
-    >
-
-      <section class="card">
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              Conta do casal
-            </h2>
-
-            <div class="small">
-              Estrutura preparada para sincronização.
-            </div>
-
-          </div>
-
-          <span class="pill">
-            MVP
-          </span>
-
-        </div>
-
-
-        <div class="notice">
-
-          <strong>
-            Guilherme & Isa
-          </strong>
-
-          <span class="small">
-            Esta é a conta financeira do casal. Nesta versão os dados ficam
-            salvos no navegador. O próximo passo é conectar um banco
-            compartilhado para funcionar em mais de um celular.
-          </span>
-
-        </div>
-
-
-        <div class="section">
-
-          <div class="label">
-            Conta atual
-          </div>
-
-          <div
-            class="row"
-            style="border-bottom:0"
-          >
-
-            <div class="person">
-
-              <div class="avatar">
-                G
-              </div>
-
-              <div>
-
-                <b>
-                  Usuário conectado
-                </b>
-
-                <div
-                  class="small account-email"
-                  id="accountEmail"
-                ></div>
-
-              </div>
-
-            </div>
-
-            <span class="pill">
-              Você
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="section">
-
-          <div class="label">
-            Membros
-          </div>
-
-          <div class="row">
-
-            <div class="person">
-
-              <div class="avatar">
-                G
-              </div>
-
-              <div>
-
-                <b>
-                  Guilherme
-                </b>
-
-                <div class="small">
-                  Administrador
-                </div>
-
-              </div>
-
-            </div>
-
-            <span class="pill">
-              Você
-            </span>
-
-          </div>
-
-
-          <div class="row">
-
-            <div class="person">
-
-              <div class="avatar">
-                I
-              </div>
-
-              <div>
-
-                <b>
-                  Isa
-                </b>
-
-                <div class="small">
-                  Membro do casal
-                </div>
-
-              </div>
-
-            </div>
-
-            <span class="pill">
-              Membro
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="section">
-
-          <div class="label">
-            Sincronização
-          </div>
-
-          <div class="notice">
-
-            <strong>
-              Banco compartilhado ainda não conectado
-            </strong>
-
-            <span class="small">
-              Para Guilherme e Isa utilizarem a mesma conta em celulares
-              diferentes, será necessário conectar autenticação e banco
-              de dados online.
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div
-          class="form-actions"
-          style="margin-top:16px"
-        >
-
-          <button
-            class="btn primary"
-            onclick="simulateAccount()"
-          >
-            Simular conexão
-          </button>
-
-        </div>
-
-        <div
-          id="accountStatus"
-          class="small"
-          style="margin-top:10px"
-        ></div>
-
-      </section>
-
-    </main>
-
-
-    <!-- =========================
-         WHATSAPP
-    ========================== -->
-
-    <main
-      id="notify"
-      class="tabpage hidden"
-    >
-
-      <section class="card">
-
-        <div class="section-head">
-
-          <div>
-
-            <h2>
-              WhatsApp do casal
-            </h2>
-
-            <div class="small">
-              Estrutura pronta para integração oficial.
-            </div>
-
-          </div>
-
-          <span class="pill">
-            Demonstração
-          </span>
-
-        </div>
-
-
-        <div class="notice">
-
-          <strong>
-            Como vai funcionar
-          </strong>
-
-          <span class="small">
-            Quando um gasto for lançado ou uma conta for paga, o sistema
-            poderá gerar automaticamente uma mensagem para o casal.
-            A versão atual não envia mensagens de verdade.
-          </span>
-
-        </div>
-
-
-        <div class="section">
-
-          <div class="label">
-            Mensagem de exemplo
-          </div>
-
-          <div
-            class="wa-preview"
-            id="waPreview"
-          ></div>
-
-        </div>
-
-
-        <div class="form-actions">
-
-          <button
-            class="btn"
-            onclick="copyWa()"
-          >
-            Copiar mensagem
-          </button>
-
-          <button
-            class="btn primary"
-            onclick="simulateWa()"
-          >
-            Simular envio
-          </button>
-
-        </div>
-
-
-        <div
-          id="waStatus"
-          class="small"
-          style="margin-top:10px"
-        ></div>
-
-      </section>
-
-    </main>
-
-
-    <div class="footer">
-      Finanças a Dois · MVP local · sincronização online em preparação
-    </div>
-
-  </div>
+  <button class="tab" data-tab="notify">
+    WhatsApp
+  </button>
 
 </div>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+<main id="home" class="tabpage">
 
-<div
-  class="modal"
-  id="modal"
->
+  <div class="two">
 
-  <div class="modal-box">
+    <section class="card">
 
-    <div class="modal-head">
+      <div class="section-head">
+        <h2>Movimentações recentes</h2>
 
-      <h2 id="modalTitle">
-        Novo lançamento
-      </h2>
+        <button class="btn" onclick="openModal('expense')">
+          Novo
+        </button>
+      </div>
 
-      <button
-        class="close"
-        onclick="closeModal()"
-      >
-        ✕
+      <div class="list" id="recent"></div>
+
+    </section>
+
+
+    <section class="card">
+
+      <div class="section-head">
+        <h2>Por pessoa</h2>
+      </div>
+
+      <div id="people"></div>
+
+    </section>
+
+  </div>
+
+
+  <section class="section card">
+
+    <div class="section-head">
+
+      <h2>Contas próximas</h2>
+
+      <button class="btn" onclick="switchTab('bills')">
+        Ver todas
       </button>
 
     </div>
 
-    <form
-      class="form"
-      id="form"
-    ></form>
+    <div id="upcoming"></div>
+
+  </section>
+
+</main>
+
+
+<main id="history" class="tabpage hidden">
+
+<section class="card">
+
+  <div class="section-head">
+    <h2>Histórico</h2>
+  </div>
+
+  <div class="toolbar">
+
+    <input id="search"
+      placeholder="Buscar gasto, categoria..."
+      oninput="renderHistory()">
+
+    <select id="filterPerson" onchange="renderHistory()">
+      <option>Todos</option>
+      <option>Guilherme</option>
+      <option>Isa</option>
+      <option>Compartilhado</option>
+    </select>
+
+    <select id="filterType" onchange="renderHistory()">
+      <option value="all">Entradas e gastos</option>
+      <option value="expense">Só gastos</option>
+      <option value="income">Só entradas</option>
+    </select>
 
   </div>
+
+  <div id="historyList"></div>
+
+</section>
+
+</main>
+
+
+<main id="bills" class="tabpage hidden">
+
+<section class="card">
+
+  <div class="section-head">
+
+    <h2>Contas a pagar</h2>
+
+    <button class="btn primary" onclick="openBill()">
+      + Conta
+    </button>
+
+  </div>
+
+  <div id="billsList"></div>
+
+</section>
+
+</main>
+
+
+<main id="goals" class="tabpage hidden">
+
+<section class="card">
+
+  <div class="section-head">
+
+    <h2>Metas</h2>
+
+    <button class="btn primary" onclick="openGoal()">
+      + Meta
+    </button>
+
+  </div>
+
+  <div id="goalsList"></div>
+
+</section>
+
+</main>
+
+
+<main id="couple" class="tabpage hidden">
+
+<section class="card">
+
+  <div class="section-head">
+
+    <div>
+      <h2>Conta do casal</h2>
+
+      <div class="small">
+        Dados compartilhados entre Guilherme e Isa.
+      </div>
+    </div>
+
+    <span class="pill">
+      Sincronizado
+    </span>
+
+  </div>
+
+
+  <div class="notice">
+
+    <strong>Guilherme & Isa</strong>
+
+    <span class="small">
+      Esta conta está conectada ao banco online.
+      Tudo que for lançado por um dos dois fica disponível para o outro.
+    </span>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="label">
+      Usuário conectado
+    </div>
+
+    <div class="row" style="border-bottom:0">
+
+      <div class="person">
+
+        <div class="avatar" id="accountAvatar">
+          G
+        </div>
+
+        <div>
+
+          <b id="accountName">
+            Usuário
+          </b>
+
+          <div class="small account-email" id="accountEmail"></div>
+
+        </div>
+
+      </div>
+
+      <span class="pill">
+        Conectado
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="label">
+      Membros
+    </div>
+
+    <div class="row">
+
+      <div class="person">
+
+        <div class="avatar">
+          G
+        </div>
+
+        <div>
+          <b>Guilherme</b>
+
+          <div class="small">
+            Administrador
+          </div>
+        </div>
+
+      </div>
+
+      <span class="pill">
+        Admin
+      </span>
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="person">
+
+        <div class="avatar">
+          I
+        </div>
+
+        <div>
+          <b>Isa</b>
+
+          <div class="small">
+            Membro do casal
+          </div>
+        </div>
+
+      </div>
+
+      <span class="pill">
+        Membro
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="label">
+      Status
+    </div>
+
+    <div class="notice">
+
+      <strong id="syncStatus">
+        Sincronização ativa
+      </strong>
+
+      <span class="small">
+        Os lançamentos são salvos no Supabase e podem ser acessados
+        pelos dois celulares.
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<main id="notify" class="tabpage hidden">
+
+<section class="card">
+
+  <div class="section-head">
+
+    <div>
+
+      <h2>WhatsApp do casal</h2>
+
+      <div class="small">
+        Prévia das notificações.
+      </div>
+
+    </div>
+
+    <span class="pill">
+      Demonstração
+    </span>
+
+  </div>
+
+
+  <div class="notice">
+
+    <strong>Como vai funcionar</strong>
+
+    <span class="small">
+      Quando um gasto for lançado ou uma conta for paga,
+      o sistema poderá gerar uma mensagem para o casal.
+    </span>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="label">
+      Mensagem
+    </div>
+
+    <div class="wa-preview" id="waPreview"></div>
+
+  </div>
+
+
+  <div class="form-actions">
+
+    <button class="btn" onclick="copyWa()">
+      Copiar mensagem
+    </button>
+
+    <button class="btn primary" onclick="simulateWa()">
+      Simular envio
+    </button>
+
+  </div>
+
+
+  <div id="waStatus" class="small" style="margin-top:10px"></div>
+
+</section>
+
+</main>
+
+
+<div class="footer">
+  Finanças a Dois · conta compartilhada · dados sincronizados online
+</div>
+
+</div>
+</div>
+
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+  <div class="modal-head">
+
+    <h2 id="modalTitle">
+      Novo lançamento
+    </h2>
+
+    <button class="close" onclick="closeModal()">
+      ✕
+    </button>
+
+  </div>
+
+  <form class="form" id="form"></form>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* ============================================================
-   CONFIGURAÇÃO
-============================================================ */
+const SUPABASE_URL =
+  'https://rspkhllrngxxrmbobfyn.supabase.co';
 
-const USERS_KEY = 'financas-a-dois-users-v1';
-const SESSION_KEY = 'financas-a-dois-session-v1';
+const SUPABASE_KEY =
+  'sb_publishable_TTVsuyc-QBfCqtQBa7buFQ_r2Z1Gakh';
 
-let session = null;
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+let currentUser = null;
+let currentCoupleId = null;
+let remoteReady = false;
+let syncTimer = null;
+
 let db = {
-  transactions: [],
-  bills: [],
-  goals: [],
-  notifications: []
+  transactions:[],
+  bills:[],
+  goals:[],
+  notifications:[]
 };
 
 
-/* ============================================================
-   UTILITÁRIOS
-============================================================ */
-
 const brl = value =>
-  Number(value || 0).toLocaleString('pt-BR',{
-    style:'currency',
-    currency:'BRL'
-  });
+  Number(value || 0).toLocaleString(
+    'pt-BR',
+    {
+      style:'currency',
+      currency:'BRL'
+    }
+  );
 
 
 const esc = value =>
@@ -1491,90 +1123,15 @@ const uid = () =>
 
 
 function today(){
-  return new Date().toISOString().slice(0,10);
-}
-
-
-function getUsers(){
-  try{
-    return JSON.parse(
-      localStorage.getItem(USERS_KEY) || '[]'
-    );
-  }catch{
-    return [];
-  }
-}
-
-
-function saveUsers(users){
-  localStorage.setItem(
-    USERS_KEY,
-    JSON.stringify(users)
-  );
-}
-
-
-function getDataKey(userId){
-  return `financas-a-dois-data-${userId}`;
-}
-
-
-function loadDatabase(){
-  if(!session?.userId){
-    db = {
-      transactions:[],
-      bills:[],
-      goals:[],
-      notifications:[]
-    };
-    return;
-  }
-
-  try{
-
-    const saved = localStorage.getItem(
-      getDataKey(session.userId)
-    );
-
-    db = saved
-      ? JSON.parse(saved)
-      : {
-          transactions:[],
-          bills:[],
-          goals:[],
-          notifications:[]
-        };
-
-  }catch{
-
-    db = {
-      transactions:[],
-      bills:[],
-      goals:[],
-      notifications:[]
-    };
-
-  }
-}
-
-
-function save(){
-  if(!session?.userId) return;
-
-  localStorage.setItem(
-    getDataKey(session.userId),
-    JSON.stringify(db)
-  );
-
-  render();
+  return new Date()
+    .toISOString()
+    .slice(0,10);
 }
 
 
 function month(){
-  return (
-    document.getElementById('monthFilter').value ||
-    new Date().toISOString().slice(0,7)
-  );
+  return document.getElementById('monthFilter').value ||
+    new Date().toISOString().slice(0,7);
 }
 
 
@@ -1583,12 +1140,10 @@ function inMonth(item){
 }
 
 
-/* ============================================================
-   AUTENTICAÇÃO LOCAL
-============================================================ */
+function showAuthMessage(message='',type=''){
 
-function showAuthMessage(message,type=''){
-  const el = document.getElementById('authMessage');
+  const el =
+    document.getElementById('authMessage');
 
   el.textContent = message;
   el.className = 'auth-message';
@@ -1596,712 +1151,437 @@ function showAuthMessage(message,type=''){
   if(type){
     el.classList.add(type);
   }
+
 }
 
 
-function createAccount(email,password){
+function showAuth(message=''){
 
-  email = email.trim().toLowerCase();
+  document
+    .getElementById('app')
+    .classList.add('hidden');
 
-  if(!email){
-    throw new Error('Informe seu e-mail.');
-  }
+  document
+    .getElementById('authScreen')
+    .style.display = 'flex';
 
-  if(password.length < 6){
-    throw new Error(
-      'A senha precisa ter pelo menos 6 caracteres.'
-    );
-  }
+  showAuthMessage(message);
 
-  const users = getUsers();
-
-  if(
-    users.some(
-      user => user.email === email
-    )
-  ){
-    throw new Error(
-      'Este e-mail já possui uma conta.'
-    );
-  }
-
-  const user = {
-    id:uid(),
-    email,
-    password,
-    createdAt:new Date().toISOString()
-  };
-
-  users.push(user);
-
-  saveUsers(users);
-
-  return user;
 }
 
 
-function login(email,password){
+function showApp(){
 
-  email = email.trim().toLowerCase();
+  document
+    .getElementById('authScreen')
+    .style.display = 'none';
 
-  const users = getUsers();
+  document
+    .getElementById('app')
+    .classList.remove('hidden');
 
-  const user = users.find(
-    item =>
-      item.email === email &&
-      item.password === password
-  );
+  document
+    .getElementById('accountEmail')
+    .textContent =
+      currentUser?.email || '';
 
-  if(!user){
-    throw new Error(
-      'E-mail ou senha inválidos.'
-    );
-  }
+  const name =
+    currentUser?.email?.startsWith('iug')
+      ? 'Guilherme'
+      : currentUser?.email?.startsWith('bazo')
+        ? 'Isa'
+        : 'Usuário';
 
-  return user;
+  document
+    .getElementById('accountName')
+    .textContent = name;
+
+  document
+    .getElementById('accountAvatar')
+    .textContent = name[0];
+
 }
 
 
-function saveSession(user){
+async function getCouple(){
 
-  session = {
-    userId:user.id,
-    email:user.email
-  };
+  const result =
+    await supabaseClient
+      .from('couple_members')
+      .select('couple_id,role')
+      .eq('user_id',currentUser.id)
+      .limit(1)
+      .maybeSingle();
+
+  if(result.error){
+    throw result.error;
+  }
+
+  if(!result.data){
+    throw new Error(
+      'Este usuário ainda não está vinculado ao casal.'
+    );
+  }
+
+  currentCoupleId =
+    result.data.couple_id;
+
+}
+
+
+async function loadRemote(){
+
+  if(!currentCoupleId){
+    return;
+  }
+
+  const [
+    transactions,
+    bills,
+    goals
+  ] = await Promise.all([
+
+    supabaseClient
+      .from('transactions')
+      .select('*')
+      .eq('couple_id',currentCoupleId)
+      .order('transaction_date',{ascending:false}),
+
+    supabaseClient
+      .from('bills')
+      .select('*')
+      .eq('couple_id',currentCoupleId)
+      .order('due_date',{ascending:true}),
+
+    supabaseClient
+      .from('goals')
+      .select('*')
+      .eq('couple_id',currentCoupleId)
+      .order('created_at',{ascending:true})
+
+  ]);
+
+
+  if(transactions.error){
+    throw transactions.error;
+  }
+
+  if(bills.error){
+    throw bills.error;
+  }
+
+  if(goals.error){
+    throw goals.error;
+  }
+
+
+  db.transactions =
+    transactions.data.map(x => ({
+      id:x.id,
+      type:x.type,
+      desc:x.description,
+      value:Number(x.value),
+      person:x.person,
+      category:x.category,
+      date:x.transaction_date,
+      installment:
+        x.installment_current
+          ? {
+              current:x.installment_current,
+              total:x.installment_total
+            }
+          : null
+    }));
+
+
+  db.bills =
+    bills.data.map(x => ({
+      id:x.id,
+      name:x.name,
+      value:Number(x.value),
+      due:x.due_date,
+      person:x.person,
+      paid:x.paid
+    }));
+
+
+  db.goals =
+    goals.data.map(x => ({
+      id:x.id,
+      name:x.name,
+      target:Number(x.target),
+      current:Number(x.current)
+    }));
+
 
   localStorage.setItem(
-    SESSION_KEY,
-    JSON.stringify(session)
+    'financas-a-dois-cache',
+    JSON.stringify(db)
   );
+
+  render();
+
 }
 
 
-function loadSession(){
+async function syncRemote(){
+
+  if(!remoteReady || !currentCoupleId){
+    return;
+  }
+
+
+  const transactions =
+    db.transactions.map(x => ({
+      id:x.id,
+      couple_id:currentCoupleId,
+      user_id:currentUser.id,
+      type:x.type,
+      description:x.desc,
+      value:Number(x.value),
+      person:x.person,
+      category:x.category || 'Outros',
+      transaction_date:x.date,
+      installment_current:
+        x.installment?.current || null,
+      installment_total:
+        x.installment?.total || null
+    }));
+
+
+  const bills =
+    db.bills.map(x => ({
+      id:x.id,
+      couple_id:currentCoupleId,
+      user_id:currentUser.id,
+      name:x.name,
+      value:Number(x.value),
+      due_date:x.due,
+      person:x.person,
+      paid:Boolean(x.paid),
+      paid_at:x.paid ? new Date().toISOString() : null
+    }));
+
+
+  const goals =
+    db.goals.map(x => ({
+      id:x.id,
+      couple_id:currentCoupleId,
+      user_id:currentUser.id,
+      name:x.name,
+      target:Number(x.target),
+      current:Number(x.current)
+    }));
+
+
+  const results =
+    await Promise.all([
+
+      supabaseClient
+        .from('transactions')
+        .upsert(transactions),
+
+      supabaseClient
+        .from('bills')
+        .upsert(bills),
+
+      supabaseClient
+        .from('goals')
+        .upsert(goals)
+
+    ]);
+
+
+  const error =
+    results.find(x => x.error);
+
+  if(error){
+    throw error.error;
+  }
+
+}
+
+
+async function save(){
+
+  localStorage.setItem(
+    'financas-a-dois-cache',
+    JSON.stringify(db)
+  );
+
+  render();
+
+  if(remoteReady){
+
+    try{
+
+      await syncRemote();
+
+    }catch(error){
+
+      console.error(
+        'Erro ao sincronizar:',
+        error
+      );
+
+    }
+
+  }
+
+}
+
+
+async function logout(){
+
+  if(syncTimer){
+    clearInterval(syncTimer);
+    syncTimer = null;
+  }
+
+  await supabaseClient.auth.signOut();
+
+  currentUser = null;
+  currentCoupleId = null;
+  remoteReady = false;
+
+  db = {
+    transactions:[],
+    bills:[],
+    goals:[],
+    notifications:[]
+  };
+
+  showAuth('Você saiu da conta.','success');
+
+}
+
+
+async function startSession(session){
+
+  currentUser =
+    session.user;
+
+  await getCouple();
+
+  await loadRemote();
+
+  remoteReady = true;
+
+  showApp();
+
+  document
+    .getElementById('syncStatus')
+    .textContent =
+      'Sincronização ativa';
+
+
+  if(syncTimer){
+    clearInterval(syncTimer);
+  }
+
+  syncTimer =
+    setInterval(
+      async () => {
+
+        if(remoteReady){
+
+          try{
+            await loadRemote();
+          }catch(error){
+            console.error(error);
+          }
+
+        }
+
+      },
+      10000
+    );
+
+}
+
+
+async function login(){
+
+  const email =
+    document
+      .getElementById('authEmail')
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById('authPassword')
+      .value;
+
+
+  if(!email || !password){
+    showAuthMessage(
+      'Informe seu e-mail e senha.',
+      'error'
+    );
+    return;
+  }
+
+
+  showAuthMessage(
+    'Entrando...'
+  );
+
+
+  const result =
+    await supabaseClient.auth
+      .signInWithPassword({
+        email,
+        password
+      });
+
+
+  if(result.error){
+
+    showAuthMessage(
+      result.error.message,
+      'error'
+    );
+
+    return;
+  }
+
 
   try{
 
-    const saved =
-      localStorage.getItem(SESSION_KEY);
-
-    session = saved
-      ? JSON.parse(saved)
-      : null;
-
-  }catch{
-
-    session = null;
-
-  }
-}
-
-
-function logout(){
-
-  localStorage.removeItem(
-    SESSION_KEY
-  );
-
-  session = null;
-
-  document.getElementById('app')
-    .classList.add('hidden');
-
-  document.getElementById('authScreen')
-    .style.display = 'flex';
-
-  document.getElementById('authEmail')
-    .value = '';
-
-  document.getElementById('authPassword')
-    .value = '';
-
-  showAuthMessage('');
-}
-
-
-function startApplication(){
-
-  loadDatabase();
-
-  document.getElementById('authScreen')
-    .style.display = 'none';
-
-  document.getElementById('app')
-    .classList.remove('hidden');
-
-  document.getElementById('accountEmail')
-    .textContent = session?.email || '';
-
-  document.getElementById('monthFilter')
-    .value = new Date()
-    .toISOString()
-    .slice(0,7);
-
-  render();
-}
-
-
-/* ============================================================
-   RENDER PRINCIPAL
-============================================================ */
-
-function render(){
-
-  if(!session) return;
-
-  const tx =
-    db.transactions.filter(inMonth);
-
-  const income =
-    tx
-      .filter(x => x.type === 'income')
-      .reduce(
-        (sum,x) => sum + Number(x.value || 0),
-        0
-      );
-
-  const expense =
-    tx
-      .filter(x => x.type === 'expense')
-      .reduce(
-        (sum,x) => sum + Number(x.value || 0),
-        0
-      );
-
-  const openBills =
-    db.bills
-      .filter(
-        x =>
-          !x.paid &&
-          String(x.due).slice(0,7) === month()
-      )
-      .reduce(
-        (sum,x) => sum + Number(x.value || 0),
-        0
-      );
-
-  const balance = income - expense;
-
-
-  document.getElementById('cards').innerHTML = [
-
-    [
-      'Saldo',
-      balance,
-      balance >= 0 ? 'pos' : 'neg'
-    ],
-
-    [
-      'Entradas',
-      income,
-      'pos'
-    ],
-
-    [
-      'Gastos',
-      expense,
-      'neg'
-    ],
-
-    [
-      'Contas abertas',
-      openBills,
-      'neg'
-    ]
-
-  ].map(card => `
-
-    <div class="card">
-
-      <div class="label">
-        ${card[0]}
-      </div>
-
-      <div class="value ${card[2]}">
-        ${brl(card[1])}
-      </div>
-
-    </div>
-
-  `).join('');
-
-
-  const recent =
-    [...tx]
-      .sort(
-        (a,b) =>
-          b.date.localeCompare(a.date)
-      )
-      .slice(0,8);
-
-
-  document.getElementById('recent').innerHTML =
-    recent.length
-      ? recent.map(txRow).join('')
-      : `
-        <div class="empty">
-          Nenhum lançamento neste mês.
-        </div>
-      `;
-
-
-  const people = [
-    'Guilherme',
-    'Isa',
-    'Compartilhado'
-  ];
-
-
-  document.getElementById('people').innerHTML =
-    people.map(person => {
-
-      const value =
-        tx
-          .filter(
-            x =>
-              x.person === person &&
-              x.type === 'expense'
-          )
-          .reduce(
-            (sum,x) =>
-              sum + Number(x.value || 0),
-            0
-          );
-
-      return `
-
-        <div class="row">
-
-          <div class="person">
-
-            <div class="avatar">
-              ${person[0]}
-            </div>
-
-            <div>
-
-              <b>
-                ${person}
-              </b>
-
-              <div class="small">
-                gastos no mês
-              </div>
-
-            </div>
-
-          </div>
-
-          <b class="neg">
-            ${brl(value)}
-          </b>
-
-        </div>
-
-      `;
-
-    }).join('');
-
-
-  const upcoming =
-    [...db.bills]
-      .filter(
-        x =>
-          !x.paid &&
-          String(x.due).slice(0,7) === month()
-      )
-      .sort(
-        (a,b) =>
-          a.due.localeCompare(b.due)
-      )
-      .slice(0,4);
-
-
-  document.getElementById('upcoming').innerHTML =
-    upcoming.length
-      ? upcoming.map(billRow).join('')
-      : `
-        <div class="empty">
-          Nenhuma conta em aberto neste mês.
-        </div>
-      `;
-
-
-  renderHistory();
-  renderBills();
-  renderGoals();
-  renderWa();
-}
-
-
-/* ============================================================
-   TRANSAÇÕES
-============================================================ */
-
-function txRow(x){
-
-  const isIncome =
-    x.type === 'income';
-
-  const installment =
-    x.installment
-      ? ` · ${x.installment.current}/${x.installment.total}`
-      : '';
-
-  return `
-
-    <div class="row">
-
-      <div class="left">
-
-        <div class="dot">
-          ${isIncome ? '↑' : '↓'}
-        </div>
-
-        <div>
-
-          <b>
-            ${esc(x.desc)}
-          </b>
-
-          <div class="small">
-
-            ${esc(x.person)}
-            ·
-            ${new Date(
-              x.date + 'T12:00'
-            ).toLocaleDateString('pt-BR')}
-
-            ·
-
-            ${esc(x.category || 'Outros')}
-
-            ${installment}
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <b class="${isIncome ? 'pos' : 'neg'}">
-
-          ${isIncome ? '+' : '−'}
-          ${brl(x.value)}
-
-        </b>
-
-        <div
-          style="
-            margin-top:5px;
-            text-align:right;
-          "
-        >
-
-          <button
-            class="btn smallbtn"
-            onclick="editTx('${x.id}')"
-          >
-            Editar
-          </button>
-
-          <button
-            class="btn smallbtn danger"
-            onclick="deleteTx('${x.id}')"
-          >
-            Excluir
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-
-function openModal(type,existing=null){
-
-  const title =
-    existing
-      ? 'Editar lançamento'
-      : type === 'income'
-        ? 'Nova entrada'
-        : 'Novo gasto';
-
-  document.getElementById(
-    'modalTitle'
-  ).textContent = title;
-
-
-  const e = existing || {};
-
-  const categories = [
-    'Alimentação',
-    'Casa',
-    'Transporte',
-    'Lazer',
-    'Saúde',
-    'Assinaturas',
-    'Educação',
-    'Viagem',
-    'Outros'
-  ];
-
-
-  document.getElementById('form').innerHTML = `
-
-    <div class="field">
-
-      <label>
-        Descrição
-      </label>
-
-      <input
-        name="desc"
-        required
-        placeholder="Ex.: Mercado"
-        value="${esc(e.desc || '')}"
-      >
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        Valor
-      </label>
-
-      <input
-        name="value"
-        required
-        type="number"
-        step="0.01"
-        min="0.01"
-        placeholder="0,00"
-        value="${e.value ?? ''}"
-      >
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        Pessoa
-      </label>
-
-      <select name="person">
-
-        ${
-          ['Guilherme','Isa','Compartilhado']
-            .map(
-              person => `
-                <option
-                  ${
-                    e.person === person
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  ${person}
-                </option>
-              `
-            )
-            .join('')
-        }
-
-      </select>
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        Categoria
-      </label>
-
-      <div class="quickcats">
-
-        ${
-          categories
-            .map(
-              category => `
-                <button
-                  type="button"
-                  onclick="
-                    this
-                    .closest('.form')
-                    .querySelector('[name=category]')
-                    .value='${category}'
-                  "
-                >
-                  ${category}
-                </button>
-              `
-            )
-            .join('')
-        }
-
-      </div>
-
-
-      <select name="category">
-
-        ${
-          categories
-            .map(
-              category =>
-                `<option>${category}</option>`
-            )
-            .join('')
-        }
-
-      </select>
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        Data
-      </label>
-
-      <input
-        name="date"
-        type="date"
-        value="${e.date || today()}"
-      >
-
-    </div>
-
-
-    ${
-      type === 'expense'
-        ? `
-          <div class="field">
-
-            <label>
-
-              <input
-                name="installments"
-                type="checkbox"
-                ${
-                  e.installment
-                    ? 'checked'
-                    : ''
-                }
-                onchange="toggleInstallments(this)"
-              >
-
-              Parcelar gasto
-
-            </label>
-
-
-            <div
-              id="installmentBox"
-              class="${
-                e.installment
-                  ? ''
-                  : 'hidden'
-              }"
-            >
-
-              <input
-                name="totalInstallments"
-                type="number"
-                min="2"
-                max="48"
-                value="${
-                  e.installment?.total || 2
-                }"
-                placeholder="Número de parcelas"
-              >
-
-            </div>
-
-          </div>
-        `
-        : ''
-    }
-
-
-    <div class="form-actions">
-
-      <button
-        type="button"
-        class="btn"
-        onclick="closeModal()"
-      >
-        Cancelar
-      </button>
-
-      <button
-        class="btn primary"
-        type="submit"
-      >
-        Salvar
-      </button>
-
-    </div>
-
-  `;
-
-
-  document.querySelector(
-    '[name=category]'
-  ).value = e.category || 'Outros';
-
-
-  document.getElementById(
-    'form'
-  ).onsubmit =
-    event =>
-      submitTx(
-        event,
-        type,
-        existing?.id
-      );
-
-
-  document
-    .getElementById('modal')
-    .classList.add('show');
-}
-
-
-function toggleInstallments(el){
-
-  const box =
-    document.getElementById(
-      'installmentBox'
+    await startSession(
+      result.data.session
     );
 
-  if(box){
-    box.classList.toggle(
-      'hidden',
-      !el.checked
+    showAuthMessage(
+      'Login realizado.',
+      'success'
     );
+
+  }catch(error){
+
+    await supabaseClient.auth.signOut();
+
+    showAuthMessage(
+      error.message ||
+      'Não foi possível carregar sua conta.',
+      'error'
+    );
+
   }
 
 }
 
 
-function submitTx(event,type,id){
+async function submitTx(event,type,id){
 
   event.preventDefault();
 
   const form =
     new FormData(event.target);
+
+  const desc =
+    String(form.get('desc') || '').trim();
 
   const value =
     Number(form.get('value'));
@@ -2309,14 +1589,11 @@ function submitTx(event,type,id){
   const date =
     form.get('date') || today();
 
-  const desc =
-    String(form.get('desc') || '').trim();
-
   const person =
     form.get('person');
 
   const category =
-    form.get('category');
+    form.get('category') || 'Outros';
 
   const total =
     Number(
@@ -2328,7 +1605,6 @@ function submitTx(event,type,id){
     alert('Informe uma descrição.');
     return;
   }
-
 
   if(!Number.isFinite(value) || value <= 0){
     alert('Informe um valor válido.');
@@ -2373,16 +1649,10 @@ function submitTx(event,type,id){
       ) / 100;
 
 
-    for(
-      let i=1;
-      i<=total;
-      i++
-    ){
+    for(let i=1;i<=total;i++){
 
       const dateObject =
-        new Date(
-          date + 'T12:00'
-        );
+        new Date(date + 'T12:00');
 
       dateObject.setMonth(
         dateObject.getMonth() + i - 1
@@ -2449,10 +1719,7 @@ function submitTx(event,type,id){
   }
 
 
-  if(
-    type === 'expense' &&
-    !id
-  ){
+  if(type === 'expense' && !id){
 
     createNotification(
       `Novo gasto registrado: ${desc} — ${brl(value)} (${person})`
@@ -2461,81 +1728,576 @@ function submitTx(event,type,id){
   }
 
 
-  save();
   closeModal();
+
+  await save();
+
+}
+
+
+function txRow(x){
+
+  const income =
+    x.type === 'income';
+
+  const installment =
+    x.installment
+      ? ` · ${x.installment.current}/${x.installment.total}`
+      : '';
+
+
+  return `
+
+<div class="row">
+
+  <div class="left">
+
+    <div class="dot">
+      ${income ? '↑' : '↓'}
+    </div>
+
+    <div>
+
+      <b>${esc(x.desc)}</b>
+
+      <div class="small">
+
+        ${esc(x.person)}
+        ·
+        ${new Date(x.date+'T12:00')
+          .toLocaleDateString('pt-BR')}
+        ·
+        ${esc(x.category || 'Outros')}
+        ${installment}
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <b class="${income?'pos':'neg'}">
+
+      ${income?'+':'−'}${brl(x.value)}
+
+    </b>
+
+    <div style="margin-top:5px;text-align:right">
+
+      <button
+        class="btn smallbtn"
+        onclick="editTx('${x.id}')">
+        Editar
+      </button>
+
+      <button
+        class="btn smallbtn danger"
+        onclick="deleteTx('${x.id}')">
+        Excluir
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+`;
+
+}
+
+
+function openModal(type,existing=null){
+
+  const title =
+    existing
+      ? 'Editar lançamento'
+      : type === 'income'
+        ? 'Nova entrada'
+        : 'Novo gasto';
+
+
+  document
+    .getElementById('modalTitle')
+    .textContent = title;
+
+
+  const e = existing || {};
+
+
+  const categories = [
+    'Alimentação',
+    'Casa',
+    'Transporte',
+    'Lazer',
+    'Saúde',
+    'Assinaturas',
+    'Educação',
+    'Viagem',
+    'Outros'
+  ];
+
+
+  document
+    .getElementById('form')
+    .innerHTML = `
+
+<div class="field">
+<label>Descrição</label>
+<input name="desc" required
+placeholder="Ex.: Mercado"
+value="${esc(e.desc||'')}">
+</div>
+
+<div class="field">
+<label>Valor</label>
+<input name="value" required
+type="number" step="0.01" min="0.01"
+value="${e.value??''}">
+</div>
+
+<div class="field">
+<label>Pessoa</label>
+
+<select name="person">
+
+${['Guilherme','Isa','Compartilhado']
+.map(person=>`
+<option ${e.person===person?'selected':''}>
+${person}
+</option>
+`).join('')}
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Categoria</label>
+
+<div class="quickcats">
+
+${categories.map(category=>`
+<button
+type="button"
+onclick="
+this.closest('.form')
+.querySelector('[name=category]')
+.value='${category}'
+">
+${category}
+</button>
+`).join('')}
+
+</div>
+
+<select name="category">
+
+${categories
+.map(category=>`
+<option>${category}</option>
+`).join('')}
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Data</label>
+
+<input
+name="date"
+type="date"
+value="${e.date||today()}">
+
+</div>
+
+${
+type==='expense'
+?`
+<div class="field">
+
+<label>
+
+<input
+name="installments"
+type="checkbox"
+${e.installment?'checked':''}
+onchange="toggleInstallments(this)">
+
+Parcelar gasto
+
+</label>
+
+<div
+id="installmentBox"
+class="${e.installment?'':'hidden'}">
+
+<input
+name="totalInstallments"
+type="number"
+min="2"
+max="48"
+value="${e.installment?.total||2}"
+placeholder="Número de parcelas">
+
+</div>
+
+</div>
+`
+:''
+}
+
+<div class="form-actions">
+
+<button
+type="button"
+class="btn"
+onclick="closeModal()">
+Cancelar
+</button>
+
+<button
+class="btn primary"
+type="submit">
+Salvar
+</button>
+
+</div>
+
+`;
+
+
+  document
+    .querySelector('[name=category]')
+    .value =
+      e.category || 'Outros';
+
+
+  document
+    .getElementById('form')
+    .onsubmit =
+      event =>
+        submitTx(
+          event,
+          type,
+          existing?.id
+        );
+
+
+  document
+    .getElementById('modal')
+    .classList.add('show');
+
+}
+
+
+function toggleInstallments(el){
+
+  const box =
+    document.getElementById(
+      'installmentBox'
+    );
+
+  if(box){
+    box.classList.toggle(
+      'hidden',
+      !el.checked
+    );
+  }
+
 }
 
 
 function editTx(id){
 
-  const transaction =
+  const tx =
     db.transactions.find(
       x => x.id === id
     );
 
-  if(transaction){
-
+  if(tx){
     openModal(
-      transaction.type,
-      transaction
+      tx.type,
+      tx
     );
-
   }
 
 }
 
 
-function deleteTx(id){
+async function deleteTx(id){
 
-  const transaction =
+  const tx =
     db.transactions.find(
       x => x.id === id
     );
 
-  if(!transaction) return;
+  if(!tx) return;
 
 
-  if(
-    confirm(
-      `Excluir "${transaction.desc}"?`
-    )
-  ){
+  if(!confirm(`Excluir "${tx.desc}"?`)){
+    return;
+  }
 
-    db.transactions =
-      db.transactions.filter(
-        x => x.id !== id
+
+  if(remoteReady){
+
+    const result =
+      await supabaseClient
+        .from('transactions')
+        .delete()
+        .eq('id',id)
+        .eq('couple_id',currentCoupleId);
+
+
+    if(result.error){
+
+      alert(
+        'Não foi possível excluir este lançamento.'
       );
 
-    save();
+      return;
+    }
 
   }
+
+
+  db.transactions =
+    db.transactions.filter(
+      x => x.id !== id
+    );
+
+
+  localStorage.setItem(
+    'financas-a-dois-cache',
+    JSON.stringify(db)
+  );
+
+  render();
 
 }
 
 
-/* ============================================================
-   HISTÓRICO
-============================================================ */
+function render(){
+
+  if(!currentUser) return;
+
+
+  const tx =
+    db.transactions.filter(inMonth);
+
+
+  const income =
+    tx
+      .filter(x=>x.type==='income')
+      .reduce(
+        (sum,x)=>sum+Number(x.value||0),
+        0
+      );
+
+
+  const expense =
+    tx
+      .filter(x=>x.type==='expense')
+      .reduce(
+        (sum,x)=>sum+Number(x.value||0),
+        0
+      );
+
+
+  const openBills =
+    db.bills
+      .filter(
+        x =>
+          !x.paid &&
+          String(x.due).slice(0,7)===month()
+      )
+      .reduce(
+        (sum,x)=>sum+Number(x.value||0),
+        0
+      );
+
+
+  const balance =
+    income-expense;
+
+
+  document
+    .getElementById('cards')
+    .innerHTML = [
+
+[
+  'Saldo',
+  balance,
+  balance>=0?'pos':'neg'
+],
+
+[
+  'Entradas',
+  income,
+  'pos'
+],
+
+[
+  'Gastos',
+  expense,
+  'neg'
+],
+
+[
+  'Contas abertas',
+  openBills,
+  'neg'
+]
+
+].map(card=>`
+
+<div class="card">
+
+<div class="label">
+${card[0]}
+</div>
+
+<div class="value ${card[2]}">
+${brl(card[1])}
+</div>
+
+</div>
+
+`).join('');
+
+
+  const recent =
+    [...tx]
+      .sort(
+        (a,b)=>
+          b.date.localeCompare(a.date)
+      )
+      .slice(0,8);
+
+
+  document
+    .getElementById('recent')
+    .innerHTML =
+      recent.length
+        ? recent.map(txRow).join('')
+        : `
+<div class="empty">
+Nenhum lançamento neste mês.
+</div>
+`;
+
+
+  const people =
+    ['Guilherme','Isa','Compartilhado'];
+
+
+  document
+    .getElementById('people')
+    .innerHTML =
+      people.map(person=>{
+
+        const value =
+          tx
+            .filter(
+              x =>
+                x.person===person &&
+                x.type==='expense'
+            )
+            .reduce(
+              (sum,x)=>
+                sum+Number(x.value||0),
+              0
+            );
+
+
+        return `
+
+<div class="row">
+
+<div class="person">
+
+<div class="avatar">
+${person[0]}
+</div>
+
+<div>
+
+<b>${person}</b>
+
+<div class="small">
+gastos no mês
+</div>
+
+</div>
+
+</div>
+
+<b class="neg">
+${brl(value)}
+</b>
+
+</div>
+
+`;
+
+      }).join('');
+
+
+  const upcoming =
+    [...db.bills]
+      .filter(
+        x =>
+          !x.paid &&
+          String(x.due).slice(0,7)===month()
+      )
+      .sort(
+        (a,b)=>
+          a.due.localeCompare(b.due)
+      )
+      .slice(0,4);
+
+
+  document
+    .getElementById('upcoming')
+    .innerHTML =
+      upcoming.length
+        ? upcoming.map(billRow).join('')
+        : `
+<div class="empty">
+Nenhuma conta em aberto neste mês.
+</div>
+`;
+
+
+  renderHistory();
+  renderBills();
+  renderGoals();
+  renderWa();
+
+}
+
 
 function renderHistory(){
 
   const person =
-    document.getElementById(
-      'filterPerson'
-    )?.value || 'Todos';
-
+    document.getElementById('filterPerson')?.value ||
+    'Todos';
 
   const type =
-    document.getElementById(
-      'filterType'
-    )?.value || 'all';
-
+    document.getElementById('filterType')?.value ||
+    'all';
 
   const query =
     (
-      document.getElementById(
-        'search'
-      )?.value || ''
+      document.getElementById('search')?.value ||
+      ''
     )
     .toLowerCase()
     .trim();
@@ -2546,13 +2308,13 @@ function renderHistory(){
       .filter(inMonth)
       .filter(
         x =>
-          person === 'Todos' ||
-          x.person === person
+          person==='Todos' ||
+          x.person===person
       )
       .filter(
         x =>
-          type === 'all' ||
-          x.type === type
+          type==='all' ||
+          x.type===type
       )
       .filter(
         x =>
@@ -2567,317 +2329,267 @@ function renderHistory(){
           .includes(query)
       )
       .sort(
-        (a,b) =>
+        (a,b)=>
           b.date.localeCompare(a.date)
       );
 
 
-  document.getElementById(
-    'historyList'
-  ).innerHTML =
-    transactions.length
-      ? transactions
-          .map(txRow)
-          .join('')
-      : `
-        <div class="empty">
-          Nenhum lançamento encontrado.
-        </div>
-      `;
+  document
+    .getElementById('historyList')
+    .innerHTML =
+      transactions.length
+        ? transactions.map(txRow).join('')
+        : `
+<div class="empty">
+Nenhum lançamento encontrado.
+</div>
+`;
+
 }
 
-
-/* ============================================================
-   CONTAS
-============================================================ */
 
 function billRow(x){
 
   return `
 
-    <div class="row">
+<div class="row">
 
-      <div>
+<div>
 
-        <b>
-          ${esc(x.name)}
-        </b>
+<b>${esc(x.name)}</b>
 
-        <div class="small">
+<div class="small">
 
-          ${esc(x.person)}
-          · vence
-          ${new Date(
-            x.due + 'T12:00'
-          ).toLocaleDateString('pt-BR')}
+${esc(x.person)}
+· vence
+${new Date(x.due+'T12:00')
+.toLocaleDateString('pt-BR')}
 
-        </div>
+</div>
 
-      </div>
+</div>
 
+<div style="text-align:right">
 
-      <div style="text-align:right">
+<b class="neg">
+${brl(x.value)}
+</b>
 
-        <b class="neg">
-          ${brl(x.value)}
-        </b>
+<br>
 
-        <br>
+<button
+class="btn smallbtn"
+onclick="payBill('${x.id}')">
+Pagar
+</button>
 
-        <button
-          class="btn smallbtn"
-          onclick="payBill('${x.id}')"
-        >
-          Pagar
-        </button>
+</div>
 
-      </div>
+</div>
 
-    </div>
+`;
 
-  `;
 }
 
 
 function openBill(){
 
-  document.getElementById(
-    'modalTitle'
-  ).textContent =
-    'Nova conta';
+  document
+    .getElementById('modalTitle')
+    .textContent =
+      'Nova conta';
 
 
-  document.getElementById(
-    'form'
-  ).innerHTML = `
+  document
+    .getElementById('form')
+    .innerHTML = `
 
-    <div class="field">
+<div class="field">
 
-      <label>
-        Nome da conta
-      </label>
+<label>Nome da conta</label>
 
-      <input
-        name="name"
-        required
-        placeholder="Ex.: Internet"
-      >
+<input
+name="name"
+required
+placeholder="Ex.: Internet">
 
-    </div>
+</div>
 
+<div class="field">
 
-    <div class="field">
+<label>Valor</label>
 
-      <label>
-        Valor
-      </label>
+<input
+name="value"
+required
+type="number"
+step="0.01"
+min="0.01">
 
-      <input
-        name="value"
-        required
-        type="number"
-        step="0.01"
-        min="0.01"
-        placeholder="0,00"
-      >
+</div>
 
-    </div>
+<div class="field">
 
+<label>Vencimento</label>
 
-    <div class="field">
+<input
+name="due"
+type="date"
+required
+value="${today()}">
 
-      <label>
-        Vencimento
-      </label>
+</div>
 
-      <input
-        name="due"
-        type="date"
-        required
-        value="${today()}"
-      >
+<div class="field">
 
-    </div>
+<label>Responsável</label>
 
+<select name="person">
 
-    <div class="field">
+<option>Guilherme</option>
+<option>Isa</option>
+<option>Compartilhado</option>
 
-      <label>
-        Responsável
-      </label>
+</select>
 
-      <select name="person">
+</div>
 
-        <option>
-          Guilherme
-        </option>
+<div class="form-actions">
 
-        <option>
-          Isa
-        </option>
+<button
+type="button"
+class="btn"
+onclick="closeModal()">
+Cancelar
+</button>
 
-        <option>
-          Compartilhado
-        </option>
+<button
+class="btn primary"
+type="submit">
+Salvar
+</button>
 
-      </select>
+</div>
 
-    </div>
+`;
 
 
-    <div class="form-actions">
+  document
+    .getElementById('form')
+    .onsubmit =
+      async event => {
 
-      <button
-        type="button"
-        class="btn"
-        onclick="closeModal()"
-      >
-        Cancelar
-      </button>
+        event.preventDefault();
 
-      <button
-        class="btn primary"
-        type="submit"
-      >
-        Salvar
-      </button>
+        const form =
+          new FormData(event.target);
 
-    </div>
+        const name =
+          String(form.get('name')||'').trim();
 
-  `;
+        const value =
+          Number(form.get('value'));
 
 
-  document.getElementById(
-    'form'
-  ).onsubmit = event => {
-
-    event.preventDefault();
-
-    const form =
-      new FormData(event.target);
+        if(!name){
+          alert('Informe o nome da conta.');
+          return;
+        }
 
 
-    const name =
-      String(
-        form.get('name') || ''
-      ).trim();
+        if(!Number.isFinite(value)||value<=0){
+          alert('Informe um valor válido.');
+          return;
+        }
 
 
-    const value =
-      Number(form.get('value'));
+        db.bills.push({
+
+          id:uid(),
+          name,
+          value,
+          due:form.get('due'),
+          person:form.get('person'),
+          paid:false
+
+        });
 
 
-    if(!name){
-      alert('Informe o nome da conta.');
-      return;
-    }
+        closeModal();
 
+        await save();
 
-    if(!Number.isFinite(value) || value <= 0){
-      alert('Informe um valor válido.');
-      return;
-    }
-
-
-    db.bills.push({
-
-      id:uid(),
-
-      name,
-
-      value,
-
-      due:
-        form.get('due'),
-
-      person:
-        form.get('person'),
-
-      paid:false
-
-    });
-
-
-    save();
-    closeModal();
-
-  };
+      };
 
 
   document
     .getElementById('modal')
     .classList.add('show');
+
 }
 
 
 function renderBills(){
 
   const element =
-    document.getElementById(
-      'billsList'
-    );
+    document.getElementById('billsList');
 
 
   const bills =
     [...db.bills]
       .sort(
-        (a,b) =>
+        (a,b)=>
           a.due.localeCompare(b.due)
       );
 
 
   element.innerHTML =
     bills.length
+      ? bills.map(bill=>{
 
-      ? bills
-          .map(
-            bill =>
-              bill.paid
+          if(bill.paid){
 
-                ? `
+            return `
 
-                  <div class="row">
+<div class="row">
 
-                    <div>
+<div>
 
-                      <b>
-                        ${esc(bill.name)}
-                      </b>
+<b>${esc(bill.name)}</b>
 
-                      <div class="small">
-                        ${esc(bill.person)}
-                        · paga
-                      </div>
+<div class="small">
+${esc(bill.person)} · paga
+</div>
 
-                    </div>
+</div>
 
-                    <span class="pill">
-                      Paga
-                    </span>
+<span class="pill">
+Paga
+</span>
 
-                  </div>
+</div>
 
-                `
+`;
 
-                : billRow(bill)
-          )
-          .join('')
+          }
 
+          return billRow(bill);
+
+        }).join('')
       : `
+<div class="empty">
+Nenhuma conta cadastrada.
+</div>
+`;
 
-        <div class="empty">
-          Nenhuma conta cadastrada.
-        </div>
-
-      `;
 }
 
 
-function payBill(id){
+async function payBill(id){
 
   const bill =
     db.bills.find(
-      x => x.id === id
+      x=>x.id===id
     );
 
 
@@ -2886,280 +2598,227 @@ function payBill(id){
   }
 
 
-  if(
-    confirm(
-      'Marcar esta conta como paga?'
-    )
-  ){
-
-    bill.paid = true;
-
-
-    db.transactions.push({
-
-      id:uid(),
-
-      type:'expense',
-
-      desc:bill.name,
-
-      value:Number(
-        bill.value
-      ),
-
-      person:bill.person,
-
-      category:'Conta',
-
-      date:today()
-
-    });
-
-
-    createNotification(
-      `Conta paga: ${bill.name} — ${brl(bill.value)} (${bill.person})`
-    );
-
-
-    save();
-
+  if(!confirm('Marcar esta conta como paga?')){
+    return;
   }
+
+
+  bill.paid=true;
+
+
+  db.transactions.push({
+
+    id:uid(),
+    type:'expense',
+    desc:bill.name,
+    value:Number(bill.value),
+    person:bill.person,
+    category:'Conta',
+    date:today()
+
+  });
+
+
+  createNotification(
+    `Conta paga: ${bill.name} — ${brl(bill.value)} (${bill.person})`
+  );
+
+
+  await save();
 
 }
 
 
-/* ============================================================
-   METAS
-============================================================ */
-
 function openGoal(){
 
-  document.getElementById(
-    'modalTitle'
-  ).textContent =
-    'Nova meta';
+  document
+    .getElementById('modalTitle')
+    .textContent =
+      'Nova meta';
 
 
-  document.getElementById(
-    'form'
-  ).innerHTML = `
+  document
+    .getElementById('form')
+    .innerHTML = `
 
-    <div class="field">
+<div class="field">
 
-      <label>
-        Nome da meta
-      </label>
+<label>Nome da meta</label>
 
-      <input
-        name="name"
-        required
-        placeholder="Ex.: Viagem"
-      >
+<input
+name="name"
+required
+placeholder="Ex.: Viagem">
 
-    </div>
+</div>
 
+<div class="field">
 
-    <div class="field">
+<label>Valor alvo</label>
 
-      <label>
-        Valor alvo
-      </label>
+<input
+name="target"
+required
+type="number"
+step="0.01"
+min="1">
 
-      <input
-        name="target"
-        required
-        type="number"
-        step="0.01"
-        min="1"
-        placeholder="0,00"
-      >
+</div>
 
-    </div>
+<div class="form-actions">
 
+<button
+type="button"
+class="btn"
+onclick="closeModal()">
+Cancelar
+</button>
 
-    <div class="form-actions">
+<button
+class="btn primary"
+type="submit">
+Criar meta
+</button>
 
-      <button
-        type="button"
-        class="btn"
-        onclick="closeModal()"
-      >
-        Cancelar
-      </button>
+</div>
 
-      <button
-        class="btn primary"
-        type="submit"
-      >
-        Criar meta
-      </button>
-
-    </div>
-
-  `;
+`;
 
 
-  document.getElementById(
-    'form'
-  ).onsubmit = event => {
+  document
+    .getElementById('form')
+    .onsubmit =
+      async event => {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const form =
-      new FormData(event.target);
+        const form =
+          new FormData(event.target);
 
+        const name =
+          String(form.get('name')||'').trim();
 
-    const name =
-      String(
-        form.get('name') || ''
-      ).trim();
-
-
-    const target =
-      Number(form.get('target'));
+        const target =
+          Number(form.get('target'));
 
 
-    if(!name){
-      alert('Informe o nome da meta.');
-      return;
-    }
+        if(!name){
+          alert('Informe o nome da meta.');
+          return;
+        }
 
 
-    if(!Number.isFinite(target) || target <= 0){
-      alert('Informe um valor alvo válido.');
-      return;
-    }
+        if(!Number.isFinite(target)||target<=0){
+          alert('Informe um valor válido.');
+          return;
+        }
 
 
-    db.goals.push({
+        db.goals.push({
 
-      id:uid(),
+          id:uid(),
+          name,
+          target,
+          current:0
 
-      name,
-
-      target,
-
-      current:0
-
-    });
+        });
 
 
-    save();
-    closeModal();
+        closeModal();
 
-  };
+        await save();
+
+      };
 
 
   document
     .getElementById('modal')
     .classList.add('show');
+
 }
 
 
 function renderGoals(){
 
   const element =
-    document.getElementById(
-      'goalsList'
-    );
+    document.getElementById('goalsList');
 
 
   element.innerHTML =
     db.goals.length
+      ? db.goals.map((goal,index)=>{
 
-      ? db.goals
-          .map(
-            (goal,index) => {
-
-              const percentage =
-                goal.target > 0
-                  ? Math.min(
-                      100,
-                      (
-                        goal.current /
-                        goal.target
-                      ) * 100
-                    )
-                  : 0;
+          const percentage =
+            goal.target>0
+              ? Math.min(
+                  100,
+                  goal.current /
+                  goal.target *
+                  100
+                )
+              : 0;
 
 
-              return `
+          return `
 
-                <div
-                  class="row"
-                  style="display:block"
-                >
+<div
+class="row"
+style="display:block">
 
-                  <div
-                    style="
-                      display:flex;
-                      justify-content:space-between;
-                      gap:10px
-                    "
-                  >
+<div style="
+display:flex;
+justify-content:space-between;
+gap:10px">
 
-                    <div>
+<div>
 
-                      <b>
-                        ${esc(goal.name)}
-                      </b>
+<b>${esc(goal.name)}</b>
 
-                      <div class="small">
-                        ${brl(goal.current)}
-                        de
-                        ${brl(goal.target)}
-                      </div>
+<div class="small">
+${brl(goal.current)}
+de
+${brl(goal.target)}
+</div>
 
-                    </div>
+</div>
 
+<button
+class="btn smallbtn"
+onclick="addGoal(${index})">
+Adicionar
+</button>
 
-                    <button
-                      class="btn smallbtn"
-                      onclick="addGoal(${index})"
-                    >
-                      Adicionar
-                    </button>
+</div>
 
-                  </div>
+<div class="goalbar">
 
+<i style="width:${percentage}%"></i>
 
-                  <div class="goalbar">
+</div>
 
-                    <i
-                      style="
-                        width:${percentage}%
-                      "
-                    ></i>
+<div
+class="small"
+style="margin-top:6px">
 
-                  </div>
+${percentage.toFixed(0)}%
 
+</div>
 
-                  <div
-                    class="small"
-                    style="margin-top:6px"
-                  >
-                    ${percentage.toFixed(0)}%
-                  </div>
+</div>
 
-                </div>
+`;
 
-              `;
-
-            }
-          )
-          .join('')
-
+        }).join('')
       : `
+<div class="empty">
+Crie uma meta para começar.
+</div>
+`;
 
-        <div class="empty">
-          Crie uma meta para começar.
-        </div>
-
-      `;
 }
 
 
-function addGoal(index){
+async function addGoal(index){
 
   const value =
     Number(
@@ -3170,40 +2829,31 @@ function addGoal(index){
     );
 
 
-  if(
-    Number.isFinite(value) &&
-    value > 0
-  ){
+  if(Number.isFinite(value)&&value>0){
 
     db.goals[index].current += value;
 
-    save();
+    await save();
 
   }
 
 }
 
 
-/* ============================================================
-   WHATSAPP
-============================================================ */
-
 function createNotification(text){
 
   db.notifications.unshift({
 
     id:uid(),
-
     text,
-
-    date:
-      new Date().toISOString()
+    date:new Date().toISOString()
 
   });
 
 
   db.notifications =
     db.notifications.slice(0,20);
+
 }
 
 
@@ -3211,13 +2861,12 @@ function renderWa(){
 
   const latest =
     db.notifications[0]?.text ||
-    'Nenhuma movimentação recente. O próximo evento aparecerá aqui.';
+    'Nenhuma movimentação recente.';
 
 
-  document.getElementById(
-    'waPreview'
-  ).textContent =
-
+  document
+    .getElementById('waPreview')
+    .textContent =
 `Finanças a Dois
 
 ${latest}
@@ -3230,28 +2879,26 @@ Guilherme & Isa`;
 async function copyWa(){
 
   const text =
-    document.getElementById(
-      'waPreview'
-    ).textContent;
+    document
+      .getElementById('waPreview')
+      .textContent;
 
 
   try{
 
-    await navigator.clipboard.writeText(
-      text
-    );
+    await navigator.clipboard.writeText(text);
 
-    document.getElementById(
-      'waStatus'
-    ).textContent =
-      'Mensagem copiada para a área de transferência.';
+    document
+      .getElementById('waStatus')
+      .textContent =
+        'Mensagem copiada.';
 
   }catch{
 
-    document.getElementById(
-      'waStatus'
-    ).textContent =
-      'Não foi possível copiar automaticamente.';
+    document
+      .getElementById('waStatus')
+      .textContent =
+        'Não foi possível copiar automaticamente.';
 
   }
 
@@ -3260,38 +2907,18 @@ async function copyWa(){
 
 function simulateWa(){
 
-  document.getElementById(
-    'waStatus'
-  ).textContent =
-    'Simulação concluída. Na versão com backend, este evento poderá ser enviado pelo WhatsApp oficial.';
+  document
+    .getElementById('waStatus')
+    .textContent =
+      'Simulação concluída.';
 
 }
 
-
-/* ============================================================
-   CONTA DO CASAL
-============================================================ */
-
-function simulateAccount(){
-
-  document.getElementById(
-    'accountStatus'
-  ).textContent =
-    'Estrutura validada. Próximo passo: conectar autenticação e banco compartilhado.';
-
-}
-
-
-/* ============================================================
-   NAVEGAÇÃO
-============================================================ */
 
 function shiftMonth(delta){
 
   const input =
-    document.getElementById(
-      'monthFilter'
-    );
+    document.getElementById('monthFilter');
 
 
   const current =
@@ -3303,19 +2930,17 @@ function shiftMonth(delta){
 
   const date =
     new Date(
-      current + '-01T12:00:00'
+      current+'-01T12:00:00'
     );
 
 
   date.setMonth(
-    date.getMonth() + delta
+    date.getMonth()+delta
   );
 
 
   input.value =
-    date
-      .toISOString()
-      .slice(0,7);
+    date.toISOString().slice(0,7);
 
 
   render();
@@ -3340,7 +2965,7 @@ function switchTab(tab){
       button =>
         button.classList.toggle(
           'active',
-          button.dataset.tab === tab
+          button.dataset.tab===tab
         )
     );
 
@@ -3351,31 +2976,24 @@ function switchTab(tab){
       page =>
         page.classList.toggle(
           'hidden',
-          page.id !== tab
+          page.id!==tab
         )
     );
 
 }
 
 
-/* ============================================================
-   EVENTOS
-============================================================ */
-
 document
   .querySelectorAll('.tab')
   .forEach(
-    button => {
-
+    button =>
       button.addEventListener(
         'click',
         () =>
           switchTab(
             button.dataset.tab
           )
-      );
-
-    }
+      )
   );
 
 
@@ -3387,99 +3005,11 @@ document
 
       event.preventDefault();
 
-      const email =
-        document
-          .getElementById('authEmail')
-          .value;
-
-      const password =
-        document
-          .getElementById('authPassword')
-          .value;
-
-
-      try{
-
-        const user =
-          login(
-            email,
-            password
-          );
-
-
-        saveSession(user);
-
-        showAuthMessage(
-          'Login realizado.',
-          'success'
-        );
-
-        startApplication();
-
-      }catch(error){
-
-        showAuthMessage(
-          error.message,
-          'error'
-        );
-
-      }
+      login();
 
     }
   );
 
-
-document
-  .getElementById('signupBtn')
-  .addEventListener(
-    'click',
-    () => {
-
-      const email =
-        document
-          .getElementById('authEmail')
-          .value;
-
-      const password =
-        document
-          .getElementById('authPassword')
-          .value;
-
-
-      try{
-
-        const user =
-          createAccount(
-            email,
-            password
-          );
-
-
-        saveSession(user);
-
-        loadDatabase();
-
-        showAuthMessage(
-          'Conta criada com sucesso.',
-          'success'
-        );
-
-        startApplication();
-
-      }catch(error){
-
-        showAuthMessage(
-          error.message,
-          'error'
-        );
-
-      }
-
-    }
-  );
-
-
-/* Fechar modal clicando fora */
 
 document
   .getElementById('modal')
@@ -3487,9 +3017,7 @@ document
     'click',
     event => {
 
-      if(
-        event.target.id === 'modal'
-      ){
+      if(event.target.id==='modal'){
         closeModal();
       }
 
@@ -3497,28 +3025,71 @@ document
   );
 
 
-/* ============================================================
-   INICIALIZAÇÃO
-============================================================ */
+supabaseClient.auth
+  .getSession()
+  .then(
+    async result => {
 
-loadSession();
+      if(result.error){
+
+        showAuth(
+          result.error.message
+        );
+
+        return;
+      }
 
 
-if(session?.userId){
+      if(!result.data.session){
 
-  startApplication();
+        showAuth();
 
-}else{
+        return;
+      }
 
-  document
-    .getElementById('authScreen')
-    .style.display = 'flex';
 
-  document
-    .getElementById('app')
-    .classList.add('hidden');
+      try{
 
-}
+        await startSession(
+          result.data.session
+        );
+
+      }catch(error){
+
+        await supabaseClient.auth.signOut();
+
+        showAuth(
+          error.message ||
+          'Não foi possível carregar sua conta.'
+        );
+
+      }
+
+    }
+  );
+
+
+supabaseClient.auth
+  .onAuthStateChange(
+    async (event,session) => {
+
+      if(event==='SIGNED_OUT'){
+
+        if(syncTimer){
+          clearInterval(syncTimer);
+          syncTimer=null;
+        }
+
+        currentUser=null;
+        currentCoupleId=null;
+        remoteReady=false;
+
+        showAuth();
+
+      }
+
+    }
+  );
 
 </script>
 
